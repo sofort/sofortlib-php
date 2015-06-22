@@ -1,0 +1,6 @@
+/.idea
+/.project
+/vimrc
+/.DS_Store
+/vendor
+/composer.lock
