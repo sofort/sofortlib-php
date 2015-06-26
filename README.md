@@ -1,4 +1,4 @@
-# SofortLib-PHP @ SOFORT AG
+# SofortLib-PHP @ SOFORT GmbH
 
 [![Build Status](https://travis-ci.org/sofort/sofortlib-php.svg)](https://travis-ci.org/sofort/sofortlib-php)
 
@@ -8,7 +8,7 @@ This documentation explains the SofortLib PHP, its parts, how to set it up and h
 
 Integrate the SofortLib PHP into your project to communicate via PHP with the SOFORT API.
 
-Find out more about the Sofort API/SDK here:
+Find out more about the SOFORT API/SDK here:
 https://www.sofort.com/integrationCenter-eng-DE/integration/API-SDK/
 
 SofortLib PHP Supports the following SOFORT Products:
@@ -46,8 +46,8 @@ The SofortLib PHP package contains the following:
 ## Functionality
 
 - initiate a SOFORT Überweisung
-- create/initiate a Sofort Überweisung Paycode
-- create/initiate a Sofort Überweisung Billcode
+- create/initiate a SOFORT Überweisung Paycode
+- create/initiate a SOFORT Überweisung Billcode
 - getting the details for one or more transactions
 - getting the details for a period and/or status
 - convert received XML to a PHP Object

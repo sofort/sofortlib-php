@@ -1,6 +1,14 @@
 =========================
-SofortLib PHP @ SOFORT AG
+SofortLib PHP @ SOFORT GmbH
 =========================
+
+v3.0.1
+----------------
+Date: 2015-06-XX
+
+	SOFORT GmbH <integration@sofort.com>
+		Changed legal form
+
 
 v3.0.0
 ----------------
