@@ -10,10 +10,13 @@ namespace Sofort\SofortLib;
  *
  * Abstract Logger Handler
  */
-abstract class AbstractLoggerHandler {
-	
-	public function __construct() {}
-	
-	
-	abstract function log($message, $log = 'log');
+abstract class AbstractLoggerHandler
+{
+    
+    public function __construct()
+    {
+    }
+    
+    
+    abstract function log($message, $log = 'log');
 }

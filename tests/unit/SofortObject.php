@@ -1,8 +1,10 @@
 <?php
 
-class Object {
-	
-	public function log($msg, $type) {
-		return array($msg, $type);
-	}
+class Object
+{
+    
+    public function log($msg, $type)
+    {
+        return array($msg, $type);
+    }
 }

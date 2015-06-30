@@ -10,4 +10,6 @@ namespace Sofort\SofortLib\Xml;
  *
  * Array To XML Exception
  */
-class ArrayToXmlException extends \Exception {}
+class ArrayToXmlException extends \Exception
+{
+}
