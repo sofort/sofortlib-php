@@ -14,35 +14,35 @@ class XmlToArrayNode {
 	
 	/**
 	 * Attributes
-	 * 
+	 *
 	 * @var array
 	 */
 	private $_attributes = array();
 	
 	/**
 	 * Children
-	 * 
+	 *
 	 * @var array
 	 */
 	private $_children = array();
 	
 	/**
 	 * Data
-	 * 
+	 *
 	 * @var string
 	 */
 	private $_data = '';
 	
 	/**
 	 * Name
-	 * 
+	 *
 	 * @var string
 	 */
 	private $_name = '';
 	
 	/**
 	 * Open
-	 * 
+	 *
 	 * @var bool
 	 */
 	private $_open = true;
@@ -59,7 +59,6 @@ class XmlToArrayNode {
 	 *
 	 * @param string $name
 	 * @param array|bool $attributes
-	 * @return \XmlToArrayNode
 	 */
 	public function __construct($name, $attributes) {
 		$this->_name = $name;
@@ -69,7 +68,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Add a child to collection
-	 * 
+	 *
 	 * @param XmlToArrayNode $XmlToArrayNode
 	 * @return void
 	 */
@@ -80,7 +79,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Getter for data, returns an array
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getData() {
@@ -90,7 +89,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Getter for name, returns the name
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getName() {
@@ -100,7 +99,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Getter for parent node
-	 * 
+	 *
 	 * @return XmlToArrayNode
 	 */
 	public function getParentXmlToArrayNode() {
@@ -110,7 +109,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Does it have any children
-	 * 
+	 *
 	 * @return int count of children
 	 */
 	public function hasChildren() {
@@ -120,7 +119,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Does it have a node
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function hasParentXmlToArrayNode() {
@@ -130,7 +129,7 @@ class XmlToArrayNode {
 	
 	/**
 	 * Is it open, returns _open
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function isOpen() {
@@ -148,8 +147,10 @@ class XmlToArrayNode {
 		$array = array();
 		$multiples = $this->_countChildren($this->_children);
 		
+		/** @var XmlToArrayNode $Child */
 		foreach ($this->_children as $Child) {
 			$simpleStructureChildHasNoChildren = $simpleStructure && !$Child->hasChildren();
+			
 			if ($multiples[$Child->getName()]) {
 				$array[$Child->getName()][] = $this->_renderNode($Child, $simpleStructureChildHasNoChildren, $simpleStructure);
 			} else {
@@ -206,11 +207,14 @@ class XmlToArrayNode {
 	 * @param array $Children
 	 * @return array
 	 */
-	private function _countChildren ($Children) {
+	private function _countChildren($Children) {
 		$multiples = array();
 		
+		/** @var XmlToArrayNode $Child */
 		foreach ($Children as $Child) {
-			$multiples[$Child->getName()] = isset($multiples[$Child->getName()]) ? $multiples[$Child->getName()] + 1 : 0;
+			$multiples[$Child->getName()] = isset($multiples[$Child->getName()])
+				? $multiples[$Child->getName()] + 1
+				: 0;
 		}
 		
 		return $multiples;
@@ -220,11 +224,16 @@ class XmlToArrayNode {
 	/**
 	 * Renders a single node
 	 *
-	 * @param string $Child
+	 * @param XmlToArrayNode $Child
 	 * @param bool $simpleStructureChildHasNoChildren
 	 * @param bool $simpleStructure
+	 * @return array
 	 */
 	private function _renderNode($Child, $simpleStructureChildHasNoChildren, $simpleStructure) {
-		return ($simpleStructureChildHasNoChildren) ? $Child->getData() : $Child->render($simpleStructure);
+		if ($simpleStructureChildHasNoChildren) {
+			return $Child->getData();
+		}
+		
+		return $Child->render($simpleStructure);
 	}
 }

@@ -19,7 +19,6 @@ class XmlDataHandler extends AbstractDataHandler {
 	 * Should be moved to somewhere else (where it fits better)
 	 *
 	 * @param string $configKey
-	 * @return \XmlDataHandler
 	 */
 	public function __construct($configKey) {
 		parent::__construct($configKey);
@@ -49,7 +48,7 @@ class XmlDataHandler extends AbstractDataHandler {
  		} else {
 			try {
 				$this->_response = XmlToArray::render($xmlResponse);
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 				$this->_response = array(
 					'errors' => array(
 						'error' => array(

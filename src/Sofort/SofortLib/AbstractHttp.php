@@ -12,7 +12,7 @@ namespace Sofort\SofortLib;
  *
  * requires libcurl and openssl
  */
-class Http {
+abstract class AbstractHttp {
 	
 	/**
 	 * Compression on/off?
@@ -112,7 +112,7 @@ class Http {
 	 * @param string $url
 	 * @param bool $compression (default false)
 	 * @param string $proxy (optional)
-	 * @return \SofortLibHttp
+	 * @return AbstractHttp
 	 */
 	public function __construct($url, $compression = false, $proxy = '') {
 		$this->url = $url;
@@ -120,6 +120,15 @@ class Http {
 		$this->proxy = $proxy;
 	}
 	
+	/**
+	 * Send data to server with POST request
+	 *
+	 * @param string $data
+	 * @param string|bool $url (optional)
+	 * @param string|bool $headers (optional)
+	 * @return string
+	 */
+	public abstract function post($data, $url = null, $headers = null);
 	
 	/**
 	 * HTTP error handling

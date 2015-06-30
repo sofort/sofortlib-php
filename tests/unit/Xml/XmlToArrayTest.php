@@ -2,10 +2,9 @@
 
 namespace Sofort\SofortLib\Xml;
 
-use Sofort\SofortLib\Xml\XmlToArray;
-use Sofort\SofortLib\Xml\XmlToArrayException;
+use Sofort\SofortLib\TestWrapper;
 
-class XmlToArrayTest extends \TestWrapper {
+class XmlToArrayTest extends TestWrapper {
 	
 	protected $_classToTest = '\Sofort\SofortLib\Xml\XmlToArray';
 	

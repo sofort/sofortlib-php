@@ -2,9 +2,10 @@
 
 namespace Sofort\SofortLib;
 
-class HttpCurlTest extends \TestWrapper {
+class HttpCurlTest extends TestWrapper {
 	
 	public function testPost () {
+		/** @var HttpCurl|\PHPUnit_Framework_MockObject_MockObject $MockPost */
 		$MockPost = $this->getMock(
 			'Sofort\SofortLib\HttpCurl',
 			array('_curlRequest'),

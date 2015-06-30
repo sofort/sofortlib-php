@@ -27,7 +27,6 @@ class IdealBanks extends AbstractWrapper {
 	 *
 	 * @param string $configKey
 	 * @param string $apiUrl (optional)
-	 * @return \SofortLibIdealBanks
 	 */
 	public function __construct($configKey, $apiUrl = '') {
 		$this->_rootTag = 'ideal';

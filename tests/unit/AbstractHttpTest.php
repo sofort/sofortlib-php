@@ -2,12 +2,9 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
+class AbstractHttpTest extends AbstractClassTest {
 
-class HttpTest extends \TestWrapper {
-
-	
-	protected $_classToTest = 'Sofort\SofortLib\Http';
+	protected $_classToTest = 'Sofort\SofortLib\AbstractHttp';
 	
 	public function providerConstructor () {
 		return array(
@@ -154,96 +151,111 @@ class HttpTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerConstructor
+	 * @param array $provided
 	 */
 	public function testConstructor($provided) {
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass($provided);
+		
 		if(count($provided) == 3) {
-			$SofortLibHttp = new Http ($provided[0], $provided[1], $provided[2]);
-			$this->assertEquals($provided[1], $SofortLibHttp->compression);
-			$this->assertEquals($provided[2], $SofortLibHttp->proxy);
+			$this->assertEquals($provided[1], $Http->compression);
+			$this->assertEquals($provided[2], $Http->proxy);
 		} else if (count($provided) == 2) {
-			$SofortLibHttp = new Http ($provided[0], $provided[1]);
-			$this->assertEquals($provided[1], $SofortLibHttp->compression);
-		} else {
-			$SofortLibHttp = new Http ($provided[0]);
+			$this->assertEquals($provided[1], $Http->compression);
 		}
 		
-		$this->assertEquals($provided[0], $SofortLibHttp->url);
+		$this->assertEquals($provided[0], $Http->url);
 	}
 	
 	
 	/**
 	 * @dataProvider providerGetHttpCode
+	 * @param array $provided
+	 * @param array $expected
 	 */
 	public function testGetHttpCode ($provided, $expected) {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->httpStatus = $provided[0];
-		$SofortLibHttp->url = $provided[1];
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->/** @var AbstractHttp $Http */httpStatus = $provided[0];
+		$Http->url = $provided[1];
 		$response = self::_getProperty('_response', $this->_classToTest);
-		$response->setValue($SofortLibHttp, $provided[2]);
-		$this->assertEquals($expected, $SofortLibHttp->getHttpCode());
+		$response->setValue($Http, $provided[2]);
+		$this->assertEquals($expected, $Http->getHttpCode());
 	}
 	
 	
 	/**
 	 * @dataProvider providerGetHttpStatusCode
+	 * @param array $provided
+	 * @param string $expected
 	 */
 	public function testGetHttpStatusCode ($provided, $expected) {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->httpStatus = $provided[0];
-		$SofortLibHttp->url = $provided[1];
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->httpStatus = $provided[0];
+		$Http->url = $provided[1];
 		$response = self::_getProperty('_response', $this->_classToTest);
-		$response->setValue($SofortLibHttp, $provided[2]);
-		$this->assertEquals($expected, $SofortLibHttp->getHttpStatusCode());
+		$response->setValue($Http, $provided[2]);
+		$this->assertEquals($expected, $Http->getHttpStatusCode());
 	}
 	
 	
 	/**
 	 * @dataProvider providerGetHttpStatusMessage
+	 * @param array $provided
+	 * @param string $expected
 	 */
 	public function testGetHttpStatusMessage ($provided, $expected) {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->httpStatus = $provided[0];
-		$SofortLibHttp->url = $provided[1];
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->httpStatus = $provided[0];
+		$Http->url = $provided[1];
 		$response = self::_getProperty('_response', $this->_classToTest);
-		$response->setValue($SofortLibHttp, $provided[2]);
-		$this->assertEquals($expected, $SofortLibHttp->getHttpStatusMessage());
+		$response->setValue($Http, $provided[2]);
+		$this->assertEquals($expected, $Http->getHttpStatusMessage());
 	}
 	
 	
 	/**
 	 * @dataProvider providerGetInfo
+	 * @param string $provided
+	 * @param string $expected
+	 * @param string $opt
 	 */
 	public function testGetInfo ($provided, $expected, $opt = '') {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->info = $provided;
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->info = $provided;
 		
 		if($opt == '') {
-			$this->assertEquals($expected, $SofortLibHttp->getInfo());
+			$this->assertEquals($expected, $Http->getInfo());
 		} else {
-			$this->assertEquals($expected, $SofortLibHttp->getInfo($opt));
+			$this->assertEquals($expected, $Http->getInfo($opt));
 		}
 	}
 	
 	
 	public function testSetConfigKey () {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->setConfigKey(self::$configkey);
-		$this->assertAttributeEquals(self::$configkey, '_configKey', $SofortLibHttp);
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->setConfigKey(self::$configkey);
+		$this->assertAttributeEquals(self::$configkey, '_configKey', $Http);
 		
 	}
 	
 	
 	public function testSetHeaders () {
-		$SofortLibHttp = new Http (self::$testapi_url);
-		$SofortLibHttp->setConfigKey(self::$configkey);
-		$SofortLibHttp->setHeaders();
+		/** @var AbstractHttp $Http */
+		$Http = $this->getTestClass(array(self::$testapi_url));
+		$Http->setConfigKey(self::$configkey);
+		$Http->setHeaders();
 		$expected = array(
 			'Authorization: Basic ' . base64_encode(self::$user_id.':'.self::$apikey),
 			'Content-Type: application/xml; charset=UTF-8',
 			'Accept: application/xml; charset=UTF-8',
 			'X-Powered-By: PHP.*',
 		);
-		$headers = $SofortLibHttp->headers;
+		$headers = $Http->headers;
 		
 		foreach ($expected as $i => $reg) {
 			$this->assertRegExp('#'.$reg.'#', $headers[$i]);

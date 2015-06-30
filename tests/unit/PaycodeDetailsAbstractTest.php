@@ -2,8 +2,6 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
 /**
  * Class constructed just to test the methods of the abstract class
  * @author mm
@@ -12,7 +10,7 @@ require_once('TestWrapper.php');
 class PaycodeDetailsAbstractMock extends PaycodeDetailsAbstract {}
 
 
-class PaycodeDetailsAbstractTest extends \TestWrapper {
+class PaycodeDetailsAbstractTest extends TestWrapper {
 
 	protected $_classToTest = 'Sofort\SofortLib\PaycodeDetailsAbstractMock';
 	
@@ -291,6 +289,7 @@ class PaycodeDetailsAbstractTest extends \TestWrapper {
 	public function testSendRequest() {
 		$SofortLibPaycodeDetailsAbstractMock = new PaycodeDetailsAbstractMock(self::$configkey);
 		$validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
+		/** @var AbstractDataHandler $AbstractDataHandler */
 		$AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
 				array(),
 				'',

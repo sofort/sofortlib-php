@@ -2,8 +2,6 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
 /**
  * Class constructed just to test the methods of the abstract class
  * @author mm
@@ -11,7 +9,7 @@ require_once('TestWrapper.php');
  */
 class PaycodeAbstractMock extends PaycodeAbstract {}
 
-class PaycodeAbstractTest extends \TestWrapper {
+class PaycodeAbstractTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\PaycodeAbstractMock';
 	

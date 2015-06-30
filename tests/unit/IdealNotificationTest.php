@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class IdealNotificationTest extends \TestWrapper {
+class IdealNotificationTest extends TestWrapper {
 	
 	protected $_request = array(
 		'transaction' => '1324-1234-5483-4891',

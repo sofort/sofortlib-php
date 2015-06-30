@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class NotificationTest extends \TestWrapper {
+class NotificationTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\Notification';
 	

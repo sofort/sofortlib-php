@@ -10,7 +10,7 @@ namespace Sofort\SofortLib;
  *
  * this class handles requests using the socket method
  */
-class HttpSocket extends Http {
+class HttpSocket extends AbstractHttp {
 	
 	/**
 	 * @var string Scheme
@@ -23,18 +23,20 @@ class HttpSocket extends Http {
 	 * 
 	 * @param $data
 	 * @param string $url
-	 * @param bool $headers
+	 * @param bool $useHeaders
 	 * @return string
 	 */
-	public function post($data, $url = null, $headers = null) {
+	public function post($data, $url = null, $useHeaders = false) {
 		$this->connectionMethod = 'Socket';
 		
 		if ($url === null) {
 			$url = $this->url;
 		}
 		
-		if ($headers === null) {
+		if (!$useHeaders) {
 			$headers = $this->headers;
+		} else {
+			$headers = array();
 		}
 		
 		$headers[] = 'User-Agent: SofortLib-php/'.SOFORTLIB_VERSION.'-'.$this->connectionMethod;

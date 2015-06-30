@@ -30,15 +30,15 @@ class TransactionData extends AbstractWrapper {
 	 * at once
 	 *
 	 * @param string $transaction
-	 * @return SofortLibTransactionData $this
+	 * @return TransactionData $this
 	 */
 	public function addTransaction($transaction) {
-		if(!isset($this->_parameters['transaction']) || !is_array($this->_parameters['transaction'])) {
+		if (!isset($this->_parameters['transaction']) || !is_array($this->_parameters['transaction'])) {
 			$this->_parameters['transaction'] = array();
 		}
 		
 		if (is_array($transaction)) {
-			foreach($transaction as $element) {
+			foreach ($transaction as $element) {
 				$this->_parameters['transaction'][] = $element;
 			}
 		} else {
@@ -51,7 +51,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the total amount of a transaction
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return double amount
 	 */
@@ -62,7 +62,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Refund, if a transaction was refunded. amount = amountRefunded if everything was refunded
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return double amount
 	 */
@@ -73,7 +73,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the transactions billcode
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string billcode
 	 */
@@ -105,7 +105,7 @@ class TransactionData extends AbstractWrapper {
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string EUR|USD|GBP.... >
 	 */
-	public function getCostsCurrencyCode ($i = 0) {
+	public function getCostsCurrencyCode($i = 0) {
 		return $this->_extractValue($i, 'currency_code', 'costs');
 	}
 	
@@ -116,7 +116,7 @@ class TransactionData extends AbstractWrapper {
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return double exchange_rate
 	 */
-	public function getCostsExchangeRate ($i = 0) {
+	public function getCostsExchangeRate($i = 0) {
 		return $this->_extractValue($i, 'exchange_rate', 'costs');
 	}
 	
@@ -127,7 +127,7 @@ class TransactionData extends AbstractWrapper {
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return double fees
 	 */
-	public function getCostsFees ($i = 0) {
+	public function getCostsFees($i = 0) {
 		return $this->_extractValue($i, 'fees', 'costs');
 	}
 	
@@ -221,7 +221,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the project id of a transaction
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return int project id
 	 */
@@ -244,7 +244,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the account number of the receiving account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string account number
 	 */
@@ -255,7 +255,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the bank code of the receiving account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string recipient bank code
 	 */
@@ -266,7 +266,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the bank name of the receiving account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string bank name
 	 */
@@ -277,7 +277,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the BIC of the receiving account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string recipient BIC
 	 */
@@ -310,7 +310,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the IBAN of the receiving account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string recipient IBAN
 	 */
@@ -321,7 +321,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the account number of the sending account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string sender account number
 	 */
@@ -332,7 +332,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the bank code of the sending account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string sender bank code
 	 */
@@ -343,7 +343,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the bank name of the sending account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string sender bank name
 	 */
@@ -354,7 +354,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the BIC of the sending account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string sender BIC
 	 */
@@ -387,7 +387,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Returns the IBAN of the sending account
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return string sender IBAN
 	 */
@@ -414,7 +414,7 @@ class TransactionData extends AbstractWrapper {
 	 * @param int $n if there are multiple status_history_items set the number (default 0)
 	 * @return mixed|bool
 	 */
-	public function getStatusHistoryItem($i = 0, $n= 0) {
+	public function getStatusHistoryItem($i = 0, $n = 0) {
 		return $this->_extractValue($i, 'status_history_item', 'status_history_items', $n);
 	}
 	
@@ -477,7 +477,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Checks if the transaction was a test
-	 * 
+	 *
 	 * @param int $i if you request multiple transactions at once you can set the number here (default 0)
 	 * @return bool
 	 */
@@ -490,7 +490,7 @@ class TransactionData extends AbstractWrapper {
 	 * Setter for transaction-counter
 	 *
 	 * @param int $count
-	 * @return SofortTransactionData $this
+	 * @return TransactionData $this
 	 */
 	public function setCount($count) {
 		$this->_count = $count;
@@ -503,7 +503,7 @@ class TransactionData extends AbstractWrapper {
 	 *
 	 * @param int $number number of results [0-100]
 	 * @param int $page result page (default 1)
-	 * @return SofortLibTransactionData $this
+	 * @return TransactionData $this
 	 * @see setTime()
 	 */
 	public function setNumber($number, $page = 1) {
@@ -518,7 +518,7 @@ class TransactionData extends AbstractWrapper {
 	 * Request for transactions with certain status
 	 *
 	 * @param string $status (loss|pending|received|refunded|untraceable)
-	 * @return SofortTransactionData
+	 * @return TransactionData
 	 */
 	public function setStatus($status) {
 		$this->_parameters['status'] = $status;
@@ -532,7 +532,7 @@ class TransactionData extends AbstractWrapper {
 	 *
 	 * @param string $from possible formats: 2011-01-25 or 2011-01-25T19:01:02+02:00
 	 * @param string $to possible formats: 2011-01-25 or 2011-01-25T19:01:02+02:00
-	 * @return SofortTransactionData
+	 * @return TransactionData
 	 */
 	public function setStatusModifiedTime($from, $to) {
 		$this->_parameters['from_status_modified_time'] = $from;
@@ -546,10 +546,9 @@ class TransactionData extends AbstractWrapper {
 	 * Request for transactions with certain status reason
 	 *
 	 * @param string $statusReason (not_credited_yet|not_credited|refunded|compensation|
-	 * 								credited|canceled|confirm_invoice|confirmation_period_expired|
-	 * 								wait_for_money|partially_credited|overpayment|rejected|sofort_bank_account_needed|
-	prefinanced|acquired|late_succeed)
-	 * @return SofortTransactionData
+	 *                                credited|canceled|confirm_invoice|confirmation_period_expired|
+	 *                                wait_for_money|partially_credited|overpayment|rejected|sofort_bank_account_needed|prefinanced|acquired|late_succeed)
+	 * @return TransactionData
 	 */
 	public function setStatusReason($statusReason) {
 		$this->_parameters['status_reason'] = $statusReason;
@@ -566,7 +565,7 @@ class TransactionData extends AbstractWrapper {
 	 *
 	 * @param string $from date possible formats: 2011-01-25 or 2011-01-25T19:01:02+02:00
 	 * @param string $to date possible formats: 2011-01-25 or 2011-01-25T19:01:02+02:00
-	 * @return SofortLibTransactionData $this
+	 * @return TransactionData $this
 	 * @see setNumber()
 	 */
 	public function setTime($from, $to) {
@@ -579,7 +578,7 @@ class TransactionData extends AbstractWrapper {
 	
 	/**
 	 * Parse the XML (override)
-	 * 
+	 *
 	 * @see SofortLibAbstract::_parse()
 	 * @return void
 	 */
@@ -601,7 +600,7 @@ class TransactionData extends AbstractWrapper {
 					);
 					
 					foreach ($special_cases AS $key => $value) {
-						if(isset($transaction[$key][$value]) && !isset($transaction[$key][$value][0])) {
+						if (isset($transaction[$key][$value]) && !isset($transaction[$key][$value][0])) {
 							$tmp = $transaction[$key][$value];
 							unset($transaction[$key][$value]);
 							$transaction[$key][$value][0] = $tmp;
@@ -630,18 +629,24 @@ class TransactionData extends AbstractWrapper {
 	 */
 	private function _extractValue($i, $tag, $parentTag = '', $n = false) {
 		//Check whether the given index is in the responses range
-		if ($i < 0 || $i >= $this->_count) return false;
+		if ($i < 0 || $i >= $this->_count) {
+			return false;
+		}
 		
-		if($parentTag == '') {
+		if ($parentTag == '') {
 			return $this->_extractValueSimpleTag($i, $tag);
-		} else if($parentTag == 'status_history_items') {
-			return $this->_extractValueStatusHistoryItem ($i, $tag, $parentTag, $n);
-		} else if($n !== false && isset($this->_response[$i][$parentTag][$tag][$n])) {
-			//Special cases: user_variable and reason both can have $n elements
-			return $this->_extractValueGroupedDataNumbered($i, $tag, $parentTag, $n);
 		} else {
-			//Some Data is nested (holder and sender data)
-			return $this->_extractValueGroupedData($i, $tag, $parentTag);
+			if ($parentTag == 'status_history_items') {
+				return $this->_extractValueStatusHistoryItem($i, $tag, $parentTag, $n);
+			} else {
+				if ($n !== false && isset($this->_response[$i][$parentTag][$tag][$n])) {
+					//Special cases: user_variable and reason both can have $n elements
+					return $this->_extractValueGroupedDataNumbered($i, $tag, $parentTag, $n);
+				} else {
+					//Some Data is nested (holder and sender data)
+					return $this->_extractValueGroupedData($i, $tag, $parentTag);
+				}
+			}
 		}
 	}
 	
@@ -694,11 +699,11 @@ class TransactionData extends AbstractWrapper {
 	 * @param int $n
 	 * @return mixed|bool
 	 */
-	private function _extractValueStatusHistoryItem ($i, $tag, $parentTag, $n) {
-		if(isset($this->_response[$i][$parentTag][$tag][$n])) {
+	private function _extractValueStatusHistoryItem($i, $tag, $parentTag, $n) {
+		if (isset($this->_response[$i][$parentTag][$tag][$n])) {
 			return array($this->_response[$i][$parentTag][$tag][$n]['status']['@data'],
-						 $this->_response[$i][$parentTag][$tag][$n]['status_reason']['@data'],
-						 $this->_response[$i][$parentTag][$tag][$n]['time']['@data']);
+				$this->_response[$i][$parentTag][$tag][$n]['status_reason']['@data'],
+				$this->_response[$i][$parentTag][$tag][$n]['time']['@data']);
 		} else {
 			return false;
 		}

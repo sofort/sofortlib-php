@@ -72,8 +72,8 @@ abstract class PaycodeAbstract extends Multipay {
 	/**
 	 * Setter for the End Date (Bill/Paycode ist valid until that date)
 	 * 
-	 * @param datetime $date YYYY-MM-DD hh:mm:ss
-	 * @return SofortPaycodeAbstract
+	 * @param string $date YYYY-MM-DD hh:mm:ss
+	 * @return PaycodeAbstract
 	 */
 	public function setEndDate($date) {
 		$this->_parameters['end_date'] = $date;
@@ -86,7 +86,7 @@ abstract class PaycodeAbstract extends Multipay {
 	 * Setter for the Senders Bank Code
 	 *
 	 * @param string $bank_code
-	 * @return SofortLibPaycodeAbstract
+	 * @return PaycodeAbstract
 	 */
 	public function setSenderBankCode($bank_code) {
 		$this->_parameters['sender']['bank_code'] = $bank_code;
@@ -98,8 +98,8 @@ abstract class PaycodeAbstract extends Multipay {
 	/**
 	 * Setter for the Start Date (Bill/Paycode ist valid from that date)
 	 * 
-	 * @param datetime $date YYYY-MM-DD hh:mm:ss
-	 * @return SofortPaycodeAbstract
+	 * @param string $date YYYY-MM-DD hh:mm:ss
+	 * @return PaycodeAbstract
 	 */
 	public function setStartDate($date) {
 		$this->_parameters['start_date'] = $date;

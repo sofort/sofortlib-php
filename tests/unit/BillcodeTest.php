@@ -2,15 +2,14 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class BillcodeTest extends \TestWrapper {
+class BillcodeTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\Billcode';
 	
 	public function testCreateBillcode() {
 		$validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
 		$SofortLibBillcode = new Billcode(self::$configkey);
+		/** @var AbstractDataHandler $AbstractDataHandler */
 		$AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
 				array(),
 				'',

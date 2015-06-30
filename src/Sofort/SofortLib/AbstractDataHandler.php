@@ -90,7 +90,6 @@ abstract class AbstractDataHandler {
 	 * Constructor for AbstractDataHandler
 	 *
 	 * @param string $configKey
-	 * @return \AbstractDataHandler
 	 */
 	public function __construct($configKey) {
 		$this->setConfigKey($configKey);
@@ -110,7 +109,7 @@ abstract class AbstractDataHandler {
 	/**
 	 * Returns the connection, normally a http instance
 	 *
-	 * @return Connection Object
+	 * @return AbstractHttp Object
 	 */
 	public function getConnection() {
 		return $this->_Connection;

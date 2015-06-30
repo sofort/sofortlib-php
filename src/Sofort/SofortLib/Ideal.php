@@ -39,14 +39,14 @@ class Ideal extends Multipay {
 	
 	/**
 	 * Password to be sent to the API
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $_password;
 	
 	/**
 	 * API-URL
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $_paymentUrl = self::IDEAL_URL;
@@ -58,10 +58,9 @@ class Ideal extends Multipay {
 	 * @param string $configKey
 	 * @param string $password
 	 * @param string $hashFunction (default sha1)
-	 * @return \SofortLibIdeal
 	 */
 	public function __construct($configKey, $password, $hashFunction = 'sha1') {
-		list($userId, $projectId, $apiKey) = explode(':', $configKey);
+		list($userId, $projectId) = explode(':', $configKey);
 		$this->_password = $password;
 		$this->_userId = $this->_parameters['user_id'] = $userId;
 		$this->_projectId = $this->_parameters['project_id'] = $projectId;
@@ -78,8 +77,12 @@ class Ideal extends Multipay {
 	 * @return string the hash
 	 */
 	public function getHashHexValue($data, $hashFunction = 'sha1') {
-		if ($hashFunction == 'sha1') return sha1($data);
-		if ($hashFunction == 'md5') return md5($data);
+		if ($hashFunction == 'sha1') {
+			return sha1($data);
+		}
+		if ($hashFunction == 'md5') {
+			return md5($data);
+		}
 		
 		//mcrypt installed?
 		if (function_exists('hash') && in_array($hashFunction, hash_algos())) {
@@ -117,33 +120,33 @@ class Ideal extends Multipay {
 		$paramString = '';
 		
 		foreach ($this->_parameters as $key => $value) {
-			$paramString .= $key.'='.urlencode($value).'&';
+			$paramString .= $key . '=' . urlencode($value) . '&';
 		}
 		
 		$paramString = substr($paramString, 0, -1); //remove last "&"
 		
-		return $this->_paymentUrl.'?'.$paramString;
+		return $this->_paymentUrl . '?' . $paramString;
 	}
-
-
+	
+	
 	/**
 	 * Set the url where you want forward after successful transaction
 	 *
-	 * @param string $successUrl url
-	 * @return SofortLibIdeal $this
+	 * @param string $abortUrl url
+	 * @return Ideal $this
 	 */
 	public function setAbortUrl($abortUrl) {
 		$this->_parameters['user_variable_4'] = $abortUrl;
-
+		
 		return $this;
 	}
-
-
+	
+	
 	/**
 	 * Setter for Amount
 	 *
 	 * @param float $amount
-	 * @return SofortLibSofortueberweisung $this
+	 * @return Ideal
 	 */
 	public function setAmount($amount = 0.00) {
 		$this->_setAmount($amount);
@@ -158,9 +161,9 @@ class Ideal extends Multipay {
 	 * to further process that notification
 	 *
 	 * @param string $notificationUrl url
-	 * @return SofortLibIdeal $this
+	 * @return Ideal
 	 */
-	public function setNotificationUrl($notificationUrl, $notifyOn = '') {
+	public function setNotificationUrl($notificationUrl) {
 		$this->_parameters['user_variable_5'] = $notificationUrl;
 		
 		return $this;
@@ -172,7 +175,7 @@ class Ideal extends Multipay {
 	 *
 	 * @param string $reason1
 	 * @param string $reason2 (optional)
-	 * @return SofortLibIdeal $this
+	 * @return Ideal
 	 */
 	public function setReason($reason1, $reason2 = '') {
 		$this->_parameters['reason_1'] = preg_replace('#[^a-zA-Z0-9+-\.,]#', ' ', $reason1);
@@ -197,7 +200,7 @@ class Ideal extends Multipay {
 	 * Set sender's bank code
 	 *
 	 * @param string $senderBankCode
-	 * @return SofortLibIdeal $this
+	 * @return Ideal
 	 */
 	public function setSenderBankCode($senderBankCode) {
 		$this->_parameters['sender_bank_code'] = $senderBankCode;
@@ -210,10 +213,12 @@ class Ideal extends Multipay {
 	 * Set sender's country id
 	 *
 	 * @param string $senderCountryId (default NL)
-	 * @return SofortLibIdeal $this
+	 * @return Ideal
 	 */
 	public function setSenderCountryId($senderCountryId = 'NL') {
 		$this->_parameters['sender_country_id'] = $senderCountryId;
+		
+		return $this;
 	}
 	
 	
@@ -221,13 +226,15 @@ class Ideal extends Multipay {
 	 * Setter for sender and holder
 	 *
 	 * @param string $senderHolder
-	 * @return string
+	 * @return Ideal
 	 */
 	public function setSenderHolder($senderHolder) {
 		$this->_parameters['sender_holder'] = $senderHolder;
+		
+		return $this;
 	}
-
-
+	
+	
 	/**
 	 * The customer will be redirected to this url after a successful
 	 * transaction, this should be a page where a short confirmation is
@@ -235,16 +242,16 @@ class Ideal extends Multipay {
 	 *
 	 * @param string $successUrl url
 	 * @param bool $redirect (default true)
-	 * @return SofortLibIdeal $this
+	 * @return Ideal
 	 */
 	public function setSuccessUrl($successUrl, $redirect = true) {
 		$this->_parameters['user_variable_3'] = $successUrl;
 		$this->setSuccessLinkRedirect($redirect);
-
+		
 		return $this;
 	}
-
-
+	
+	
 	/**
 	 * Getter for the payment domain
 	 *

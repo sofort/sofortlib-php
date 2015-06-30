@@ -6,7 +6,7 @@ use Sofort\SofortLib\Xml\ArrayToXml;
 use Sofort\SofortLib\Xml\Element\Tag;
 use Sofort\SofortLib\Xml\Element\Text;
 
-class ArrayToXmlTest extends \TestWrapper {
+class ArrayToXmlTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\Xml\ArrayToXml';
 	
@@ -30,13 +30,13 @@ class ArrayToXmlTest extends \TestWrapper {
 	
 	public function testConstructInputSizeException () {
 		$this->setExpectedException('Sofort\SofortLib\Xml\ArrayToXmlException');
-		$ArrayToXml = new ArrayToXml(array(1,2));
+		new ArrayToXml(array(1,2));
 	}
 	
 	
 	public function testConstructMaxDepthException () {
 		$this->setExpectedException('Sofort\SofortLib\Xml\ArrayToXmlException');
-		$ArrayToXml = new ArrayToXml(array(1), 55);
+		new ArrayToXml(array(1), 55);
 	}
 	
 	

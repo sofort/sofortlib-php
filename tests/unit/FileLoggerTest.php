@@ -13,6 +13,7 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase {
 	
 	
 	public function testLog() {
+		/** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $stub */
 		$stub = $this->getMock('\Sofort\SofortLib\FileLogger', array('_log'));
 		$stub->expects($this->at(0))->method('_log')->with('log')->will($this->returnValue('log'));
 		$this->assertEquals('log', $stub->log('log'));

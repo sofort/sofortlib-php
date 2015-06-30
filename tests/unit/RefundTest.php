@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class RefundTest extends \TestWrapper {
+class RefundTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\Refund';
 	
@@ -243,6 +241,7 @@ class RefundTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerAddRefund
+	 * @param $provided
 	 */
 	public function testAddRefund ($provided) {
 		$SofortLibRefund = new Refund(self::$configkey);
@@ -538,6 +537,7 @@ class RefundTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetPartialRefundId
+	 * @param $provided
 	 */
 	public function testSetPartialRefundId ($provided) {
 		$SofortLibRefund = new Refund(self::$configkey);
@@ -551,10 +551,11 @@ class RefundTest extends \TestWrapper {
 		$received = $SofortLibRefund->getParameters();
 		$this->assertEquals($provided[3], $received['refund'][1]['partial_refund_id']);
 	}
-
-
+	
+	
 	/**
 	 * @dataProvider providerSetReason
+	 * @param $provided
 	 */
 	public function testSetReason ($provided) {
 		$SofortLibRefund = new Refund(self::$configkey);
@@ -587,9 +588,10 @@ class RefundTest extends \TestWrapper {
 		);
 	}
 	
-
+	
 	/**
 	 * @dataProvider providerSetTitle
+	 * @param $provided
 	 */
 	public function testSetTitle($provided) {
 		$SofortLibRefund = new Refund(self::$configkey);

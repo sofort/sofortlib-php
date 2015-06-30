@@ -14,7 +14,7 @@ class Sofortueberweisung extends Multipay {
 	 * Constructor for Sofortueberweisung
 	 *
 	 * @param string $configKey
-	 * @return \Sofortueberweisung
+	 * @return Sofortueberweisung
 	 */
 	public function __construct($configKey) {
 		parent::__construct($configKey);

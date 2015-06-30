@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class TransactionDataTest extends \TestWrapper {
+class TransactionDataTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\TransactionData';
 	
@@ -1456,6 +1454,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerAddTransaction
+	 * @param $provided
 	 */
 	public function testAddTransaction ($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
@@ -1476,7 +1475,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['amount']['@data'],
 				$SofortLibTransactionData->getAmount(0)
@@ -1489,11 +1488,12 @@ class TransactionDataTest extends \TestWrapper {
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][2]['amount']['@data'],
 				$SofortLibTransactionData->getAmount(2)
 		);
-		$this->assertFalse($SofortLibTransactionData->getAmount(-1));
+		$this->assertEquals(0.0, $SofortLibTransactionData->getAmount(-1));
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['amount']['@data'],
 				$SofortLibTransactionData->getAmount()
@@ -1507,7 +1507,8 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['amount_refunded']['@data'],
 				$SofortLibTransactionData->getAmountRefunded(0)
@@ -1520,11 +1521,11 @@ class TransactionDataTest extends \TestWrapper {
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][2]['amount_refunded']['@data'],
 				$SofortLibTransactionData->getAmountRefunded(2)
 		);
-		$this->assertFalse($SofortLibTransactionData->getAmountRefunded(-1));
+		$this->assertEquals(0.0, $SofortLibTransactionData->getAmountRefunded(-1));
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['amount_refunded']['@data'],
 				$SofortLibTransactionData->getAmountRefunded()
@@ -1538,7 +1539,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['billcode']['code']['@data'],
 				$SofortLibTransactionData->getBillcode(0)
@@ -1555,7 +1556,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['billcode']['code']['@data'],
 				$SofortLibTransactionData->getBillcode()
@@ -1569,7 +1570,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 	
 		if(array_key_exists('su', $this->_xml_parse_test_multiple['transactions']['transaction_details'][0])) {
 			$this->assertEquals(
@@ -1593,7 +1594,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 	
 		if(array_key_exists('su', $this->_xml_parse_test_multiple['transactions']['transaction_details'])) {
 			$this->assertEquals(
@@ -1610,7 +1611,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['costs']['currency_code']['@data'],
 				$SofortLibTransactionData->getCostsCurrencyCode(0)
@@ -1627,7 +1628,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['costs']['currency_code']['@data'],
 				$SofortLibTransactionData->getCostsCurrencyCode()
@@ -1641,7 +1642,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['costs']['exchange_rate']['@data'],
 				$SofortLibTransactionData->getCostsExchangeRate(0)
@@ -1658,7 +1659,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['costs']['exchange_rate']['@data'],
 				$SofortLibTransactionData->getCostsExchangeRate()
@@ -1672,7 +1673,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['costs']['fees']['@data'],
 				$SofortLibTransactionData->getCostsFees(0)
@@ -1689,7 +1690,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals($this->_xml_parse_test_single['transactions']['transaction_details']['costs']['fees']['@data'], $SofortLibTransactionData->getCostsFees());
 	}
 	
@@ -1707,7 +1708,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['currency_code']['@data'],
 				$SofortLibTransactionData->getCurrency(0)
@@ -1724,7 +1725,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['currency_code']['@data'],
 				$SofortLibTransactionData->getCurrency()
@@ -1738,7 +1739,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['email_customer']['@data'],
 				$SofortLibTransactionData->getEmailCustomer(0)
@@ -1755,7 +1756,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['email_customer']['@data'],
 				$SofortLibTransactionData->getEmailCustomer()
@@ -1769,7 +1770,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['exchange_rate']['@data'],
 				$SofortLibTransactionData->getExchangeRate(0)
@@ -1786,7 +1787,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['exchange_rate']['@data'],
 				$SofortLibTransactionData->getExchangeRate()
@@ -1800,7 +1801,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['language_code']['@data'],
 				$SofortLibTransactionData->getLanguageCode(0)
@@ -1817,7 +1818,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['language_code']['@data'],
 				$SofortLibTransactionData->getLanguageCode()
@@ -1831,7 +1832,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['paycode']['code']['@data'],
 				$SofortLibTransactionData->getPaycode(0));
@@ -1845,7 +1846,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['paycode']['code']['@data'],
 				$SofortLibTransactionData->getPaycode()
@@ -1859,7 +1860,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['payment_method']['@data'],
 				$SofortLibTransactionData->getPaymentMethod(0)
@@ -1876,7 +1877,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['payment_method']['@data'],
 				$SofortLibTransactionData->getPaymentMethod()
@@ -1890,7 +1891,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['phone_customer']['@data'],
 				$SofortLibTransactionData->getPhoneNumberCustomer(0)
@@ -1907,7 +1908,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['phone_customer']['@data'],
 				$SofortLibTransactionData->getPhoneNumberCustomer()
@@ -1921,7 +1922,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['project_id']['@data'],
 				$SofortLibTransactionData->getProjectId(0)
@@ -1938,7 +1939,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['project_id']['@data'],
 				$SofortLibTransactionData->getProjectId()
@@ -1952,7 +1953,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$reason = array(
 				array(
 						$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['reasons']['reason'][0]['@data'],
@@ -1980,7 +1981,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$reason = array(
 				array(
 						$this->_xml_parse_test_single['transactions']['transaction_details']['reasons']['reason'][0]['@data'],
@@ -1999,7 +2000,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['account_number']['@data'],
 				$SofortLibTransactionData->getRecipientAccountNumber(0)
@@ -2016,7 +2017,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['account_number']['@data'],
 				$SofortLibTransactionData->getRecipientAccountNumber()
@@ -2030,7 +2031,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['bank_code']['@data'],
 				$SofortLibTransactionData->getRecipientBankCode(0)
@@ -2047,7 +2048,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['bank_code']['@data'],
 				$SofortLibTransactionData->getRecipientBankCode());
@@ -2060,7 +2061,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['bank_name']['@data'],
 				$SofortLibTransactionData->getRecipientBankName(0)
@@ -2077,7 +2078,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['bank_name']['@data'],
 				$SofortLibTransactionData->getRecipientBankName()
@@ -2091,7 +2092,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['bic']['@data'],
 				$SofortLibTransactionData->getRecipientBic(0)
@@ -2108,7 +2109,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['bic']['@data'],
 				$SofortLibTransactionData->getRecipientBic()
@@ -2122,7 +2123,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['country_code']['@data'],
 				$SofortLibTransactionData->getRecipientCountryCode(0)
@@ -2139,7 +2140,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['country_code']['@data'],
 				$SofortLibTransactionData->getRecipientCountryCode()
@@ -2153,7 +2154,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['holder']['@data'],
 				$SofortLibTransactionData->getRecipientHolder(0)
@@ -2170,7 +2171,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['holder']['@data'],
 				$SofortLibTransactionData->getRecipientHolder()
@@ -2184,7 +2185,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['recipient']['iban']['@data'],
 				$SofortLibTransactionData->getRecipientIban(0)
@@ -2201,7 +2202,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['recipient']['iban']['@data'],
 				$SofortLibTransactionData->getRecipientIban()
@@ -2231,7 +2232,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['account_number']['@data'],
 				$SofortLibTransactionData->getSenderAccountNumber(0)
@@ -2248,7 +2249,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['account_number']['@data'],
 				$SofortLibTransactionData->getSenderAccountNumber()
@@ -2262,7 +2263,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['bank_code']['@data'],
 				$SofortLibTransactionData->getSenderBankCode(0)
@@ -2279,7 +2280,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['bank_code']['@data'],
 				$SofortLibTransactionData->getSenderBankCode()
@@ -2293,7 +2294,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['bank_name']['@data'],
 				$SofortLibTransactionData->getSenderBankName(0)
@@ -2310,7 +2311,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['bank_name']['@data'],
 				$SofortLibTransactionData->getSenderBankName()
@@ -2324,7 +2325,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['bic']['@data'],
 				$SofortLibTransactionData->getSenderBic(0)
@@ -2341,7 +2342,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['bic']['@data'],
 				$SofortLibTransactionData->getSenderBic()
@@ -2355,7 +2356,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['country_code']['@data'],
 				$SofortLibTransactionData->getSenderCountryCode(0)
@@ -2372,7 +2373,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['country_code']['@data'],
 				$SofortLibTransactionData->getSenderCountryCode()
@@ -2386,7 +2387,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['holder']['@data'],
 				$SofortLibTransactionData->getSenderHolder(0)
@@ -2403,7 +2404,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['holder']['@data'],
 				$SofortLibTransactionData->getSenderHolder()
@@ -2417,7 +2418,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['sender']['iban']['@data'],
 				$SofortLibTransactionData->getSenderIban(0)
@@ -2434,7 +2435,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['sender']['iban']['@data'],
 				$SofortLibTransactionData->getSenderIban()
@@ -2448,7 +2449,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['status']['@data'],
 				$SofortLibTransactionData->getStatus(0)
@@ -2465,7 +2466,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['status']['@data'],
 				$SofortLibTransactionData->getStatus()
@@ -2479,7 +2480,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				array(
 						$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['status_history_items']['status_history_item'][0]['status']['@data'],
@@ -2523,7 +2524,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				array(
 						$this->_xml_parse_test_single['transactions']['transaction_details']['status_history_items']['status_history_item']['status']['@data'],
@@ -2537,7 +2538,7 @@ class TransactionDataTest extends \TestWrapper {
 		$test['transactions']['transaction_details'][0]['status_history_items']['status_history_item'][0] = 'test';
 		$response->setValue($SofortLibTransactionData,  $test);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertFalse($SofortLibTransactionData->getStatusHistoryItem(0,1));
 	}
 	
@@ -2548,7 +2549,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['status_modified']['@data'],
 				$SofortLibTransactionData->getStatusModifiedTime(0)
@@ -2565,7 +2566,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['status_modified']['@data'],
 				$SofortLibTransactionData->getStatusModifiedTime()
@@ -2579,7 +2580,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['status_reason']['@data'],
 				$SofortLibTransactionData->getStatusReason(0)
@@ -2596,7 +2597,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['status_reason']['@data'],
 				$SofortLibTransactionData->getStatusReason()
@@ -2610,7 +2611,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['time']['@data'],
 				$SofortLibTransactionData->getTime(0)
@@ -2627,7 +2628,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['time']['@data'],
 				$SofortLibTransactionData->getTime()
@@ -2641,7 +2642,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['transaction']['@data'],
 				$SofortLibTransactionData->getTransaction(0)
@@ -2658,7 +2659,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['transaction']['@data'],
 				$SofortLibTransactionData->getTransaction()
@@ -2672,7 +2673,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 	
 		if(isset($this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['user_variables']['user_variable'][0]['@data'])) {
 			$this->assertEquals(
@@ -2699,7 +2700,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 	
 		if(isset($this->_xml_parse_test_multiple['transactions']['transaction_details']['user_variables']['user_variable'][0]['@data'])) {
 			$this->assertEquals(
@@ -2716,7 +2717,7 @@ class TransactionDataTest extends \TestWrapper {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_multiple);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_multiple['transactions']['transaction_details'][0]['test']['@data'],
 				$SofortLibTransactionData->isTest(0)
@@ -2733,7 +2734,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 		$response->setValue($SofortLibTransactionData, $this->_xml_parse_test_single);
 		$parse->invoke($SofortLibTransactionData);
-		$result = $SofortLibTransactionData->getResponse();
+		$SofortLibTransactionData->getResponse();
 		$this->assertEquals(
 				$this->_xml_parse_test_single['transactions']['transaction_details']['test']['@data'],
 				$SofortLibTransactionData->isTest()
@@ -2750,6 +2751,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetNumber
+	 * @param $provided
 	 */
 	public function testSetNumber ($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
@@ -2761,6 +2763,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetStatus
+	 * @param $provided
 	 */
 	public function testSetStatus($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
@@ -2771,10 +2774,11 @@ class TransactionDataTest extends \TestWrapper {
 			$this->assertEquals($status, $received['status']);
 		}
 	}
-
-
+	
+	
 	/**
 	 * @dataProvider providerSetStatusModifiedTime
+	 * @param $provided
 	 */
 	public function testSetStatusModifiedTime ($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
@@ -2789,6 +2793,7 @@ class TransactionDataTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetStatusReason
+	 * @param $provided
 	 */
 	public function testSetStatusReason ($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);
@@ -2799,10 +2804,11 @@ class TransactionDataTest extends \TestWrapper {
 			$this->assertEquals($statusReason, $received['status_reason']);
 		}
 	}
-
-
+	
+	
 	/**
 	 * @dataProvider providerSetTime
+	 * @param $provided
 	 */
 	public function testSetTime ($provided) {
 		$SofortLibTransactionData = new TransactionData(self::$configkey);

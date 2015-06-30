@@ -84,7 +84,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for Amount
 	 *
 	 * @param float $amount
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setAmount($amount = 0.00) {
 		$this->_setAmount($amount);
@@ -98,7 +98,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * this will be used for sofortvorkasse and sofortrechnung
 	 *
 	 * @param string $customersEmail email address
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setEmailCustomer($customersEmail) {
 		$this->_parameters['email_customer'] = $customersEmail;
@@ -111,7 +111,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for languageCode
 	 *
 	 * @param string $languageCode | fallback EN
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setLanguageCode($languageCode) {
 		$this->_parameters['language_code'] = !empty($languageCode) ? $languageCode : 'EN';
@@ -124,7 +124,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Set the phone number of the customer
 	 *
 	 * @param string $customersPhone phone number
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setPhoneCustomer($customersPhone) {
 		$this->_parameters['phone_customer'] = $customersPhone;
@@ -138,7 +138,8 @@ abstract class Multipay extends AbstractWrapper {
 	 *
 	 * @param string $reason1
 	 * @param string $reason2 (optional)
-	 * @return SofortLibAbstract $this
+   * 
+	 * @return Multipay
 	 */
 	public function setReason($reason1, $reason2 = '') {
 		if (!empty($reason1)) {
@@ -158,7 +159,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * @param string $bankCode bank code of bank
 	 * @param string $accountNumber account number
 	 * @param string $holder Name/Holder of this account
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderAccount($bankCode, $accountNumber, $holder) {
 		$this->_parameters['sender'] = array(
@@ -175,7 +176,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for senders BIC
 	 *
 	 * @param string $bic
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderBic($bic) {
 		$this->_parameters['sender']['bic'] = $bic;
@@ -188,7 +189,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for senders country code (ISO 3166-1)
 	 *
 	 * @param string $countryCode
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderCountryCode($countryCode) {
 		$this->_parameters['sender']['country_code'] = $countryCode;
@@ -201,7 +202,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for senders holder (ISO 3166-1)
 	 *
 	 * @param string $holder
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderHolder($holder) {
 		$this->_parameters['sender']['holder'] = $holder;
@@ -214,7 +215,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for senders iban
 	 *
 	 * @param string $iban
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderIban($iban) {
 		$this->_parameters['sender']['iban'] = $iban;
@@ -229,7 +230,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * @param string $bic bic of bank
 	 * @param string $iban iban of account
 	 * @param string $holder Name/Holder of this account
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setSenderSepaAccount($bic, $iban, $holder) {
 		$this->_parameters['sender'] = array(
@@ -249,7 +250,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * defaults to unlimited if not set
 	 *
 	 * @param int $timeout timeout in seconds
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setTimeout($timeout) {
 		$this->_parameters['timeout'] = $timeout;
@@ -262,7 +263,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Add another variable this can be your internal order id or multiple variables
 	 *
 	 * @param string|array $userVariable the contents of the variable
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setUserVariable($userVariable) {
 		if (!is_array($userVariable)) $userVariable = array($userVariable);
@@ -279,7 +280,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * find out if someone uses an outdated module
 	 *
 	 * @param string $version version string of your module
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	public function setVersion($version) {
 		$this->_parameters['interface_version'] = $version;
@@ -292,7 +293,7 @@ abstract class Multipay extends AbstractWrapper {
 	 * Setter for Amount
 	 *
 	 * @param float $amount
-	 * @return SofortLibMultipay $this
+	 * @return Multipay $this
 	 */
 	protected function _setAmount($amount = 0.00) {
 		$this->_parameters['amount'] = $amount;

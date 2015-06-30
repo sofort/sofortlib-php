@@ -57,9 +57,11 @@ class FileLogger extends AbstractLoggerHandler {
 	 * @param string $path
 	 */
 	public function __construct($path = '') {
-		$this->_logfilePath = ($path != '') ? $path : dirname(__FILE__).'/logs/log.txt';
-		$this->_errorLogfilePath = dirname(__FILE__).'/logs/error_log.txt';
-		$this->_warningsLogfilePath = dirname(__FILE__).'/logs/warning_log.txt';
+		$srcDir = dirname(dirname(dirname(__FILE__)));
+		
+		$this->_logfilePath = ($path != '') ? $path : $srcDir.'/logs/log.txt';
+		$this->_errorLogfilePath = $srcDir.'/logs/error_log.txt';
+		$this->_warningsLogfilePath = $srcDir.'/logs/warning_log.txt';
 	}
 	
 	

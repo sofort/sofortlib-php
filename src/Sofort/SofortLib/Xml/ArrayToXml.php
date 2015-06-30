@@ -2,7 +2,6 @@
 
 namespace Sofort\SofortLib\Xml;
 
-use Sofort\SofortLib\Xml\Element\Element;
 use Sofort\SofortLib\Xml\Element\Tag;
 use Sofort\SofortLib\Xml\Element\Text;
 
@@ -38,7 +37,7 @@ class ArrayToXml {
 	 * @param int $maxDepth (default 10)
 	 * @param bool $trim (default true)
 	 * @throws ArrayToXmlException
-	 * @return \ArrayToXml
+	 * @return ArrayToXml
 	 */
 	public function __construct(array $input, $maxDepth = 10, $trim = true) {
 		if ($maxDepth > 50) {

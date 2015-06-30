@@ -24,7 +24,7 @@ class Notification {
 	/**
 	 * Container for the returned timestamp
 	 *
-	 * @var Datetime
+	 * @var string
 	 */
 	private $_time;
 	

@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class IdealBanksTest extends \TestWrapper {
+class IdealBanksTest extends TestWrapper {
 	
 	protected $_classToTest = 'Sofort\SofortLib\IdealBanks';
 			

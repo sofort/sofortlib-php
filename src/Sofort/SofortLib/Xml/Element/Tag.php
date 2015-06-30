@@ -16,6 +16,7 @@ namespace Sofort\SofortLib\Xml\Element;
  *
  * @link http://www.sofort.com/ official website
  */
+use Sofort\SofortLib\Xml\XmlToArrayNode;
 
 /**
  * @copyright 2010-2015 SOFORT GmbH
@@ -59,8 +60,9 @@ class Tag extends Element {
 		$output = '';
 		$attributes = '';
 		
+		/** @var XmlToArrayNode $child */
 		foreach ($this->children as $child) {
-			$output .= is_object($child) ? $child->render() : $child;
+			$output .= is_object($child) ? $child->render(false) : $child;
 		}
 		
 		foreach ($this->attributes as $key => $value) {

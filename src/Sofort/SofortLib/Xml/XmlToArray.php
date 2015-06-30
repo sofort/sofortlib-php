@@ -15,7 +15,7 @@ class XmlToArray {
 	/**
 	 * Reference to the current node the parser is at
 	 *
-	 * @var $_CurrentXmlToArrayNode
+	 * @var XmlToArrayNode
 	 */
 	private $_CurrentXmlToArrayNode = null;
 
@@ -57,7 +57,6 @@ class XmlToArray {
 	 * @param string $input
 	 * @param int $maxDepth (default 20)
 	 * @throws XmlToArrayException
-	 * @return \XmlToArray
 	 */
 	public function __construct($input, $maxDepth = 20) {
 		if (!is_string($input)) throw new XmlToArrayException('No valid input.');

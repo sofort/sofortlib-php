@@ -103,7 +103,7 @@ class IdealNotification {
 	 * Get the Notification details
 	 * 
 	 * @param string $request (POST-Data)
-	 * @return SofortLibIdealNotification $this
+	 * @return IdealNotification $this
 	 */
 	public function getNotification($request) {
 		if (array_key_exists('status_reason', $request) && !empty($request['status_reason'])) {
@@ -184,7 +184,7 @@ class IdealNotification {
 	/**
 	 * Getter for time
 	 *
-	 * @return datetime
+	 * @return string
 	 */
 	public function getTime() {
 		return $this->params['created'];

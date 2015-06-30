@@ -2,8 +2,6 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
 /**
  * Class constructed just to test the methods of the abstract class
  * @author mm
@@ -11,7 +9,7 @@ require_once('TestWrapper.php');
  */
 class MultipayMock extends Multipay {}
 
-class MultipayTest extends \TestWrapper {
+class MultipayTest extends TestWrapper {
 
 	protected $_classToTest = 'Sofort\SofortLib\MultipayMock';
 	
@@ -146,6 +144,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerGetPaymentUrl
+	 * @param $provided
 	 */
 	public function testGetPaymentUrl ($provided) {
 		$response = self::_getProperty('_response', $this->_classToTest);
@@ -169,6 +168,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerGetTransactionId
+	 * @param $provided
 	 */
 	public function testGetTransactionId ($provided) {
 		$response = self::_getProperty('_response', $this->_classToTest);
@@ -181,6 +181,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetAmount
+	 * @param $provided
 	 */
 	public function testSetAmount ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -192,7 +193,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetEmailCustomer
-	 *
+	 * @param $provided
 	 */
 	public function testSetEmailCustomer ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -204,6 +205,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetHolder
+	 * @param $provided
 	 */
 	public function testSetHolder ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -215,7 +217,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetLanguageCode
-	 *
+	 * @param $provided
 	 */
 	public function testSetLanguageCode ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -227,7 +229,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetPhoneCustomer
-	 *
+	 * @param $provided
 	 */
 	public function testSetPhoneCustomer ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -239,6 +241,8 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetReason
+	 * @param $provided
+	 * @param $expected
 	 */
 	public function testSetReason ($provided, $expected) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -249,6 +253,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderAccount
+	 * @param $provided
 	 */
 	public function testSetSenderAccount ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -260,6 +265,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderBic
+	 * @param $provided
 	 */
 	public function testSetSenderBic ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -271,6 +277,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderCountryCode
+	 * @param $provided
 	 */
 	public function testSetSenderCountryCode ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -282,6 +289,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderIban
+	 * @param $provided
 	 */
 	public function testSetSenderIban ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -293,6 +301,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderSepaAccount
+	 * @param $provided
 	 */
 	public function testSetSenderSepaAccount ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -304,7 +313,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetTimeout
-	 *
+	 * @param $provided
 	 */
 	public function testSetTimeout ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);
@@ -316,6 +325,7 @@ class MultipayTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetUserVariable
+	 * @param $provided
 	 */
 	public function testSetUserVariable ($provided) {
 		$SofortLibMultipayMock = new MultipayMock(self::$configkey);

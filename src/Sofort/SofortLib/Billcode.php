@@ -55,23 +55,37 @@ class Billcode extends PaycodeAbstract {
 	 * AbortURL is not available in Billcode, Superclass' method will be overwritten
 	 *
 	 * @see SofortLibAbstract::setAbortUrl()
+	 * @param string $abortUrl
+	 * 
+	 * @return Billcode
 	 */
-	public function setAbortUrl($abortUrl = '') { return $this; }
+	public function setAbortUrl($abortUrl = '') { 
+		return $this; 
+	}
 	
 	
 	/**
 	 * SuccessURL is not available in Billcode, Superclass' method will be overwritten
 	 *
 	 * @see SofortLibAbstract::setSuccessUrl()
+	 * @param string $successUrl
+	 * @param bool $redirect
+	 * @return Billcode
 	 */
-	public function setSuccessUrl($successUrl = '', $redirect = true) { return $this; }
+	public function setSuccessUrl($successUrl = '', $redirect = true) { 
+		return $this; 
+	}
 	
 	
 	/**
 	 * TimeoutURL is not available in Billcode, Superclass' method will be overwritten
-	 * 
+	 *
 	 * @see SofortLibAbstract::setTimeoutUrl()
+	 * @param string $timeoutUrl
+	 * @return Billcode
 	 */
-	public function setTimeoutUrl($timeoutUrl = '') { return $this; }
+	public function setTimeoutUrl($timeoutUrl = '') { 
+		return $this; 
+	}
 	
 }

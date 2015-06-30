@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class IdealTest extends \TestWrapper {
+class IdealTest extends TestWrapper {
 
 
 	public function providerSetAbortUrl () {
@@ -218,6 +216,7 @@ class IdealTest extends \TestWrapper {
 	
 	/**
      * @dataProvider providerSetAbortUrl
+	 * @param string $provided
      */
     public function testSetAbortUrl ($provided)  {
         $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -229,6 +228,7 @@ class IdealTest extends \TestWrapper {
 	
     /**
 	 * @dataProvider providerSetNotificationUrl
+     * @param string $provided
 	 */
 	public function testSetNotificationUrl ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -240,8 +240,9 @@ class IdealTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetReason
+	 * @param array $provided
 	 */
-	public function testSetReason ($provided)  {
+	public function testSetReason (array $provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
 		$SofortIdeal->setReason($provided[0], $provided[1]);
 		$received = $SofortIdeal->getParameters();
@@ -252,6 +253,7 @@ class IdealTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderAccountNumber
+	 * @param string $provided
 	 */
 	public function testSetSenderAccountNumber ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -263,6 +265,7 @@ class IdealTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderBankCode
+	 * @param string $provided
 	 */
 	public function testSetSenderBankCode ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -274,6 +277,7 @@ class IdealTest extends \TestWrapper {
 
 	/**
 	 * @dataProvider providerSetSenderCountryId
+	 * @param string $provided
 	 */
 	public function testSetSenderCountryId ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -284,6 +288,7 @@ class IdealTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetSenderHolder
+	 * @param string $provided
 	 */
 	public function testSetSenderHolder ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
@@ -295,6 +300,7 @@ class IdealTest extends \TestWrapper {
 	
     /**
      * @dataProvider providerSetSuccessUrl
+     * @param string $provided
      */
 	public function testSetSuccessUrl ($provided)  {
 		$SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);

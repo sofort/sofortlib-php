@@ -5,7 +5,9 @@ namespace Sofort\SofortLib;
 /**
  * SofortLibPHP version - Constant
  */
-define('SOFORTLIB_VERSION', '3.0.0');
+if(!defined('SOFORTLIB_VERSION')) {
+	define('SOFORTLIB_VERSION', '3.0.0');
+}
 
 /**
  * @copyright 2010-2015 SOFORT GmbH
@@ -14,7 +16,7 @@ define('SOFORTLIB_VERSION', '3.0.0');
  * @license http://www.gnu.org/licenses/lgpl.html
  *
  * Base class for SOFORT XML-Api
- * 
+ *
  * This class implements basic http authentication and an xml-parser
  * for parsing response messages
  *
@@ -52,7 +54,7 @@ abstract class AbstractWrapper {
 	
 	/**
 	 * Api Key as provided in User Account on sofort.com
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $_apiKey = '';
@@ -87,7 +89,7 @@ abstract class AbstractWrapper {
 	
 	/**
 	 * Contains the allowed products
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $_products = array('global', 'su');
@@ -152,7 +154,7 @@ abstract class AbstractWrapper {
 	
 	/**
 	 * Getter for ConfigKey
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getConfigKey() {
@@ -162,7 +164,7 @@ abstract class AbstractWrapper {
 	
 	/**
 	 * Preparing array for request
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getData() {
@@ -209,7 +211,7 @@ abstract class AbstractWrapper {
 				$errorIsArrayAndNotEmpty = is_array($error) && !empty($error);
 				
 				if ($this->_getPaymentMethodAllPmGlobal($paymentMethod, $key) && $errorIsArrayAndNotEmpty) {
-					return 'Error: '.$error[0]['code'].':'.$error[0]['message'];
+					return 'Error: ' . $error[0]['code'] . ':' . $error[0]['message'];
 				}
 			}
 		}
@@ -346,7 +348,7 @@ abstract class AbstractWrapper {
 	
 	/**
 	 * Alter error array and set error message and error code together as one
-	 * 
+	 *
 	 * @param array $errors
 	 * @return array (empty array if no error exist ELSE array with error-codes and error-messages)
 	 */
@@ -356,7 +358,7 @@ abstract class AbstractWrapper {
 		foreach ($errorKeys as $errorKey) {
 			foreach ($errors[$errorKey] as &$partialError) {
 				if (!empty($partialError['field']) && $partialError['field'] !== '') {
-					$partialError['code'] .= '.'.$partialError['field'];
+					$partialError['code'] .= '.' . $partialError['field'];
 				}
 			};
 		}
@@ -427,7 +429,7 @@ abstract class AbstractWrapper {
 	/**
 	 * Log the given string into log.txt
 	 * use $this->enableLog(); to enable logging before!
-	 * 
+	 *
 	 * @param string $message
 	 * @return void
 	 */
@@ -475,11 +477,15 @@ abstract class AbstractWrapper {
 		$this->_request = $this->getData();
 		$this->_DataHandler->handle($this->_request);
 		$getRequest = $this->_DataHandler->getRequest();
-		if(is_array($getRequest)) $getRequest = implode($getRequest);
+		
+		if (is_array($getRequest)) {
+			$getRequest = implode($getRequest);
+		}
+		
 		$this->log(' Request -> ' . $getRequest);
 		$this->_response = $this->_DataHandler->getResponse();
 		$getRawResponse = $this->_DataHandler->getRawResponse();
-		if(is_array($getRawResponse)) $getRequest = implode($getRawResponse);
+		
 		$this->log(' Response -> ' . $getRawResponse);
 		$this->_parse();
 		$this->_handleErrors();
@@ -492,7 +498,7 @@ abstract class AbstractWrapper {
 	 * his cart or to the payment selection page
 	 *
 	 * @param string $abortUrl url for aborting the transaction
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setAbortUrl($abortUrl) {
 		$this->_parameters['abort_url'] = $abortUrl;
@@ -504,8 +510,8 @@ abstract class AbstractWrapper {
 	/**
 	 * Sets the version tag, appended to the root tag as attribute
 	 *
-	 *@param string $apiVersion
-	 *@return SofortLibAbstract $this
+	 * @param string $apiVersion
+	 * @return AbstractWrapper $this
 	 */
 	public function setApiVersion($apiVersion) {
 		$this->_apiVersion = $apiVersion;
@@ -518,7 +524,7 @@ abstract class AbstractWrapper {
 	 * Setter for ConfigKey and parsing ConfigKey into userId, projectId, apiKey
 	 *
 	 * @param string $configKey
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setConfigKey($configKey) {
 		$this->_configKey = $configKey;
@@ -532,7 +538,7 @@ abstract class AbstractWrapper {
 	 * Setter for Currency eg. EUR
 	 *
 	 * @param string $currency
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setCurrencyCode($currency) {
 		$this->_parameters['currency_code'] = $currency;
@@ -545,7 +551,7 @@ abstract class AbstractWrapper {
 	 * Setter for the DataHandler
 	 *
 	 * @param AbstractDataHandler $Handler
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setDataHandler(AbstractDataHandler $Handler) {
 		$this->_DataHandler = $Handler;
@@ -578,7 +584,7 @@ abstract class AbstractWrapper {
 			$this->errors[$pos] = array();
 		}
 		
-		$error = array ('code' => $errorCode, 'message' => $message, 'field' => $field);
+		$error = array('code' => $errorCode, 'message' => $message, 'field' => $field);
 		$this->errors[$pos][] = $error;
 	}
 	
@@ -586,7 +592,7 @@ abstract class AbstractWrapper {
 	/**
 	 * Set logging disabled
 	 *
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setLogDisabled() {
 		$this->enableLogging = false;
@@ -598,7 +604,7 @@ abstract class AbstractWrapper {
 	/**
 	 * Set logging enable
 	 *
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setLogEnabled() {
 		$this->enableLogging = true;
@@ -611,7 +617,7 @@ abstract class AbstractWrapper {
 	 * Setter for LogHandler
 	 *
 	 * @param AbstractLoggerHandler $Logger
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setLogger(AbstractLoggerHandler $Logger) {
 		$this->_Logger = $Logger;
@@ -625,7 +631,7 @@ abstract class AbstractWrapper {
 	 *
 	 * @param string $notificationAddress
 	 * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setNotificationEmail($notificationAddress, $notifyOn = '') {
 		return $this->_setNotification($notificationAddress, 'email', $notifyOn);
@@ -637,7 +643,7 @@ abstract class AbstractWrapper {
 	 *
 	 * @param string $notificationAddress
 	 * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setNotificationUrl($notificationAddress, $notifyOn = '') {
 		return $this->_setNotification($notificationAddress, 'url', $notifyOn);
@@ -648,7 +654,7 @@ abstract class AbstractWrapper {
 	 * Setter for Parameter Array
 	 *
 	 * @param array $parameters
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setParameters($parameters) {
 		$this->_parameters = $parameters;
@@ -661,7 +667,7 @@ abstract class AbstractWrapper {
 	 * Setter for redirecting the success link automatically
 	 *
 	 * @param bool $arg
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setSuccessLinkRedirect($arg) {
 		$this->_parameters['success_link_redirect'] = $arg;
@@ -677,7 +683,7 @@ abstract class AbstractWrapper {
 	 *
 	 * @param string $successUrl the url after a successful transaction
 	 * @param bool $redirect (default true)
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setSuccessUrl($successUrl, $redirect = true) {
 		$this->_parameters['success_url'] = $successUrl;
@@ -692,7 +698,7 @@ abstract class AbstractWrapper {
 	 * he will be redirected to this page
 	 *
 	 * @param string $timeoutUrl url
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	public function setTimeoutUrl($timeoutUrl) {
 		$this->_parameters['timeout_url'] = $timeoutUrl;
@@ -749,7 +755,8 @@ abstract class AbstractWrapper {
 	/**
 	 * Parse data received or being sent
 	 */
-	protected function _parse() {}
+	protected function _parse() {
+	}
 	
 	
 	/**
@@ -759,16 +766,20 @@ abstract class AbstractWrapper {
 	 * @param string $notificationAddress email address or url
 	 * @param string $notificationType (url|email)
 	 * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
-	 * @return SofortLibAbstract $this
+	 * @return AbstractWrapper $this
 	 */
 	protected function _setNotification($notificationAddress, $notificationType, $notifyOn = '') {
 		if ($notifyOn) {
 			$notifyOnArrayIn = explode(',', $notifyOn);
-			$notifyOnDefault = array('loss','pending','received','refunded', 'untraceable');
+			$notifyOnDefault = array('loss', 'pending', 'received', 'refunded', 'untraceable');
 			$notifyOnArray = array();
 			
-			if (is_array($notifyOnArrayIn)) foreach($notifyOnArrayIn as $notifyStatus) {
-				if (in_array($notifyStatus, $notifyOnDefault)) $notifyOnArray[] = $notifyStatus;
+			if (is_array($notifyOnArrayIn)) {
+				foreach ($notifyOnArrayIn as $notifyStatus) {
+					if (in_array($notifyStatus, $notifyOnDefault)) {
+						$notifyOnArray[] = $notifyStatus;
+					}
+				}
 			}
 			
 			$notifyOn = array('notify_on' => implode(',', $notifyOnArray));
@@ -780,7 +791,7 @@ abstract class AbstractWrapper {
 			$notification = array('@data' => $notificationAddress, '@attributes' => $notifyOn);
 		}
 		
-		$this->_parameters['notification_'.$notificationType.'s']['notification_'.$notificationType][] = $notification;
+		$this->_parameters['notification_' . $notificationType . 's']['notification_' . $notificationType][] = $notification;
 		
 		return $this;
 	}
@@ -811,7 +822,7 @@ abstract class AbstractWrapper {
 		$messagePaymentMethodOrGlobalSetNotEmpty = $messagePaymentMethodSetNotEmpty || $messageGlobalSetNotEmpty;
 		
 		if ($messagePaymentMethodOrGlobalSetNotEmpty) {
-			return  true;
+			return true;
 		}
 		
 		return false;

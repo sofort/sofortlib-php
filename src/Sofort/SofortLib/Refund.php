@@ -40,7 +40,7 @@ class Refund extends Multipay {
 	 * @param string $transaction transaction id of transfer you want to refund
 	 * @param float $amount amount of money to refund, less or equal to amount of original transfer
 	 * @param string $comment (optional) comment that will be displayed in admin-menu later
-	 * @return SofortLibRefund $this
+	 * @return Refund
 	 */
 	public function addRefund($transaction, $amount, $comment = '') {
 		$this->_parameters['refund'][$this->_refund_count] = array(
@@ -356,7 +356,7 @@ class Refund extends Multipay {
 	 * Setter for the partial refund Id. Has to been added after relating addRefund
 	 *
 	 * @param $partialRefundId
-	 * @return SofortLibRefund $this
+	 * @return Refund $this
 	 */
 	public function setPartialRefundId($partialRefundId) {
 		$this->_parameters['refund'][$this->_refund_count - 1]['partial_refund_id'] = $partialRefundId;
@@ -373,7 +373,7 @@ class Refund extends Multipay {
 	 * @param string $reason_1
 	 * @param string $reason_2
 	 * @see SofortLibMultipay::setReason()
-	 * @return SofortLibRefund $this
+	 * @return Refund $this
 	 */
 	public function setReason($reason_1, $reason_2 = '') {
 		$this->_parameters['refund'][$this->_refund_count - 1]['reason_1'] = $reason_1;
@@ -388,7 +388,7 @@ class Refund extends Multipay {
 	 * Setter for title
 	 *
 	 * @param string $title
-	 * @return SofortLibRefund $this
+	 * @return Refund $this
 	 */
 	public function setTitle($title) {
 		$this->_parameters['title'] = $title;

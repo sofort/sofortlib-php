@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class BillcodeDetailsTest extends \TestWrapper {
+class BillcodeDetailsTest extends TestWrapper {
 	protected $_classToTest = 'Sofort\SofortLib\BillcodeDetails';
 
 	public function testGetBillcode() {

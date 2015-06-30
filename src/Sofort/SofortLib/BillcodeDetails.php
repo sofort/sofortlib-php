@@ -29,7 +29,7 @@ class BillcodeDetails extends PaycodeDetailsAbstract {
 	 * Setter for the billcode of the request
 	 * 
 	 * @param string $billcode
-	 * @return SofortLibBillcodeDetails $this
+	 * @return BillcodeDetails $this
 	 */
 	public function setBillcode($billcode) {
 		$this->_parameters['billcode'] = $billcode;

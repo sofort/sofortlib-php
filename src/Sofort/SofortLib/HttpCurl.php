@@ -10,7 +10,7 @@ namespace Sofort\SofortLib;
  *
  * this class handles requests using the curl method
  */
-class HttpCurl extends Http {
+class HttpCurl extends AbstractHttp {
 	
 	/**
 	 * Send data to server with POST request

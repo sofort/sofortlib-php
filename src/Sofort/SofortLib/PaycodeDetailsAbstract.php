@@ -50,7 +50,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper {
 	/**
 	 * Getter for the end date of the Bill/Paycode
 	 *
-	 * @return datetime
+	 * @return string
 	 */
 	public function getEndDate() {
 		return $this->_extractValue('end_date');
@@ -121,7 +121,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper {
 	/**
 	 * Getter for the Bill/Paycodes Start Date
 	 *
-	 * @return datetime
+	 * @return string
 	 */
 	public function getStartDate() {
 		return $this->_extractValue('start_date');
@@ -141,7 +141,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper {
 	/**
 	 * Getter for the time Bill/Paycode was created
 	 *
-	 * @return datetime
+	 * @return string
 	 */
 	public function getTimeCreated() {
 		return $this->_extractValue('time_created');
@@ -151,7 +151,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper {
 	/**
 	 * Getter for the time Bill/Paycode was used
 	 *
-	 * @return datetime
+	 * @return string
 	 */
 	public function getTimeUsed() {
 		return $this->_extractValue('time_used');
@@ -236,7 +236,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper {
 	 * Setter for the root-container
 	 *
 	 * @param string $root
-	 * @return SofortLibPaycodeDetailsAbstract
+	 * @return PaycodeDetailsAbstract
 	 */
 	protected function _setRoot($root) {
 		$this->_root = $root;

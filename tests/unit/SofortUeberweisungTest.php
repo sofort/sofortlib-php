@@ -2,9 +2,7 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class SofortueberweisungTest extends \TestWrapper {
+class SofortueberweisungTest extends TestWrapper {
 
 	protected $_classToTest = 'Sofort\SofortLib\Sofortueberweisung';
 	
@@ -343,7 +341,7 @@ class SofortueberweisungTest extends \TestWrapper {
 		$XmlDataHandler = new XmlDataHandler(self::$configkey);
 		
 		//mock http
-		$http = $this->getMock('Sofort\SofortLib\Http', array('post'), array(self::$testapi_url));
+		$http = $this->getMock('Sofort\SofortLib\AbstractHttp', array('post'), array(self::$testapi_url));
 		$http->expects($this->any())->method('post')->will($this->returnArgument(0));
 		$XmlDataHandler->setConnection($http);
 		
@@ -372,6 +370,7 @@ class SofortueberweisungTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetCustomerprotection
+	 * @param $provided
 	 */
 	public function testSetCustomerprotection ($provided) {
 		$Sofortueberweisung = new Sofortueberweisung(self::$configkey);
@@ -390,6 +389,8 @@ class SofortueberweisungTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetReason
+	 * @param $provided
+	 * @param $expected
 	 */
 	public function testSetReason ($provided, $expected) {
 		$Sofortueberweisung = new Sofortueberweisung(self::$configkey);
@@ -400,6 +401,7 @@ class SofortueberweisungTest extends \TestWrapper {
 	
 	/**
 	 * @dataProvider providerSetVersion $provided
+	 * @param $provided
 	 */
 	public function testSetVersion ($provided) {
 		$Sofortueberweisung = new Sofortueberweisung(self::$configkey);

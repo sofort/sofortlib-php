@@ -41,7 +41,7 @@ class PaycodeDetails extends PaycodeDetailsAbstract {
 	 * Setter for the paycode of the request
 	 * 
 	 * @param string $paycode
-	 * @return SofortLibPaycodeDetails
+	 * @return PaycodeDetails
 	 */
 	public function setPaycode($paycode) {
 		$this->_parameters['paycode'] = $paycode;

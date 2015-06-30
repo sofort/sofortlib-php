@@ -2,15 +2,14 @@
 
 namespace Sofort\SofortLib;
 
-require_once('TestWrapper.php');
-
-class PaycodeTest extends \TestWrapper {
+class PaycodeTest extends TestWrapper {
 
 	protected $_classToTest = 'Sofort\SofortLib\Paycode';
 	
 	public function testCreatePaycode() {
 		$validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
 		$SofortLibPaycode = new Paycode(self::$configkey);
+		/** @var AbstractDataHandler $AbstractDataHandler */
 		$AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
 				array(),
 				'',
