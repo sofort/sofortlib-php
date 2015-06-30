@@ -15,12 +15,13 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.5.1"
 	},
-	"suggests": {
+	"suggest": {
 		"ext-curl": "*"
 	},
 	"autoload": {
-		"psr-4": {
-			"Sofort\\SofortLib\\": "src"
-		}
+		"psr-0": {"Sofort\\SofortLib\\": "src"}
+	}, 
+	"autoload-dev": {
+		"psr-4": {"Sofort\\SofortLib\\": "tests/unit"}
 	}
 }
