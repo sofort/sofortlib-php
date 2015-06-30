@@ -161,9 +161,10 @@ class Ideal extends Multipay {
 	 * to further process that notification
 	 *
 	 * @param string $notificationUrl url
+	 * @param string $notifyOn
 	 * @return Ideal
 	 */
-	public function setNotificationUrl($notificationUrl) {
+	public function setNotificationUrl($notificationUrl, $notifyOn = '') {
 		$this->_parameters['user_variable_5'] = $notificationUrl;
 		
 		return $this;
