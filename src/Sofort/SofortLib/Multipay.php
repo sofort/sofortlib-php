@@ -145,16 +145,20 @@ abstract class Multipay extends AbstractWrapper
      * Setter for Reasons
      *
      * @param string $reason1
-     * @param string $reason2 (optional)
-     *
+     * @param string $reason2 (optional) defaults to empty string
+     * @param string $productCode (optional) defaults to null
      * @return Multipay
      */
-    public function setReason($reason1, $reason2 = '')
-    {
+    public function setReason($reason1, $reason2 = '', $productCode = null) {
         if (!empty($reason1)) {
             $reason1 = $this->_shortenReason($reason1);
             $reason2 = (!empty($reason2)) ? $this->_shortenReason($reason2) : $reason2;
-            $this->_parameters['reasons']['reason'] = array($reason1, $reason2);
+            
+            if (!$productCode) {
+                $this->_parameters['reasons']['reason'] = array($reason1, $reason2);
+            } else {
+                $this->_parameters[$productCode]['reasons']['reason'] = array($reason1, $reason2);
+            }
         }
         
         return $this;
