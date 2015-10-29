@@ -2,6 +2,12 @@
 SofortLib PHP @ SOFORT GmbH
 =========================
 
+v3.0.3
+----------------
+Date: 2015-10-XX
+	SOFORT GmbH <integration@sofort.com>
+		Added productCode param in Multipay setPurpose function
+
 v3.0.1
 ----------------
 Date: 2015-06-XX
