@@ -183,9 +183,11 @@ class Ideal extends Multipay
      *
      * @param string $reason1
      * @param string $reason2 (optional)
+     * @param string $productCode (unused in this implementation)
+     * 
      * @return Ideal
      */
-    public function setReason($reason1, $reason2 = '')
+    public function setReason($reason1, $reason2 = '', $productCode = null)
     {
         $this->_parameters['reason_1'] = preg_replace('#[^a-zA-Z0-9+-\.,]#', ' ', $reason1);
         $this->_parameters['reason_2'] = preg_replace('#[^a-zA-Z0-9+-\.,]#', ' ', $reason2);
