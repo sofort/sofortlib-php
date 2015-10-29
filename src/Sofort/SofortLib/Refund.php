@@ -396,10 +396,12 @@ class Refund extends Multipay
      *
      * @param string $reason_1
      * @param string $reason_2
+     * @param string $productCode (unused in this implementation)
+     * 
      * @see SofortLibMultipay::setReason()
      * @return Refund $this
      */
-    public function setReason($reason_1, $reason_2 = '')
+    public function setReason($reason_1, $reason_2 = '', $productCode = null)
     {
         $this->_parameters['refund'][$this->_refund_count - 1]['reason_1'] = $reason_1;
         
