@@ -12,17 +12,17 @@ $Sofortueberweisung = new Sofortueberweisung($configkey);
 $Sofortueberweisung->setAmount(10.21);
 $Sofortueberweisung->setCurrencyCode('EUR');
 $Sofortueberweisung->setReason('Testueberweisung', 'Verwendungszweck');
-$Sofortueberweisung->setSuccessUrl('http://www.google.de', true);
-$Sofortueberweisung->setAbortUrl('http://www.google.de');
+$Sofortueberweisung->setSuccessUrl('YOUR_SUCCESS_URL', true); // i.e. http://my.shop/order/success
+$Sofortueberweisung->setAbortUrl('YOUR_ABORT_URL');
 // $Sofortueberweisung->setSenderSepaAccount('SFRTDE20XXX', 'DE06000000000023456789', 'Max Mustermann');
 // $Sofortueberweisung->setSenderCountryCode('DE');
-// $Sofortueberweisung->setNotificationUrl('http://www.google.de', 'loss,pending');
-// $Sofortueberweisung->setNotificationUrl('http://www.yahoo.com', 'loss');
-// $Sofortueberweisung->setNotificationUrl('http://www.bing.com', 'pending');
-// $Sofortueberweisung->setNotificationUrl('http://www.sofort.com', 'received');
-// $Sofortueberweisung->setNotificationUrl('http://www.youtube.com', 'refunded');
-// $Sofortueberweisung->setNotificationUrl('http://www.youtube.com', 'untraceable');
-$Sofortueberweisung->setNotificationUrl('http://www.twitter.com');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss,pending');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'pending');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'received');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'refunded');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'untraceable');
+$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 //$Sofortueberweisung->setCustomerprotection(true);
 
 
