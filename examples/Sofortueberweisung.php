@@ -32,6 +32,8 @@ if($Sofortueberweisung->isError()) {
 	//SOFORT-API didn't accept the data
 	echo $Sofortueberweisung->getError();
 } else {
+	//get unique transaction ID useful for check payment status
+	$transactionId = $Sofortueberweisung->getTransactionId();
 	//buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
 	$paymentUrl = $Sofortueberweisung->getPaymentUrl();
 	header('Location: '.$paymentUrl);
