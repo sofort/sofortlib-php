@@ -662,7 +662,7 @@ abstract class AbstractWrapper
      * Sets the notification Email-address and it's attributes
      *
      * @param string $notificationAddress
-     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
+     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded)
      * @return AbstractWrapper $this
      */
     public function setNotificationEmail($notificationAddress, $notifyOn = '')
@@ -675,7 +675,7 @@ abstract class AbstractWrapper
      * Sets the notification URL and it's attributes
      *
      * @param string $notificationAddress
-     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
+     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded)
      * @return AbstractWrapper $this
      */
     public function setNotificationUrl($notificationAddress, $notifyOn = '')
@@ -806,14 +806,14 @@ abstract class AbstractWrapper
      *
      * @param string $notificationAddress email address or url
      * @param string $notificationType (url|email)
-     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded|untraceable)
+     * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded)
      * @return AbstractWrapper $this
      */
     protected function _setNotification($notificationAddress, $notificationType, $notifyOn = '')
     {
         if ($notifyOn) {
             $notifyOnArrayIn = explode(',', $notifyOn);
-            $notifyOnDefault = array('loss', 'pending', 'received', 'refunded', 'untraceable');
+            $notifyOnDefault = array('loss', 'pending', 'received', 'refunded');
             $notifyOnArray = array();
             
             if (is_array($notifyOnArrayIn)) {
