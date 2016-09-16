@@ -3,8 +3,8 @@ namespace Sofort\SofortLib;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// enter your configuration key – you only can create a new configuration key by creating
-// a new Gateway project in your account at sofort.com
+// Enter your configuration key.
+// You only can create a new configuration key by creating a new Gateway project in your account at sofort.com
 $configkey = '12345:12345:5dbdad2bc861d907eedfd9528127d002';
 
 $Sofortueberweisung = new Sofortueberweisung($configkey);
@@ -28,13 +28,13 @@ $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 $Sofortueberweisung->sendRequest();
 
 if($Sofortueberweisung->isError()) {
-	//SOFORT-API didn't accept the data
-	echo $Sofortueberweisung->getError();
+    // SOFORT-API didn't accept the data
+    echo $Sofortueberweisung->getError();
 } else {
-	//get unique transaction ID useful for check payment status
-	$transactionId = $Sofortueberweisung->getTransactionId();
-	//buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
-	$paymentUrl = $Sofortueberweisung->getPaymentUrl();
-	header('Location: '.$paymentUrl);
+    // get unique transaction-ID useful for check payment status
+    $transactionId = $Sofortueberweisung->getTransactionId();
+    // buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
+    $paymentUrl = $Sofortueberweisung->getPaymentUrl();
+    header('Location: '.$paymentUrl);
 }
 

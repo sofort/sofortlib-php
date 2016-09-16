@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -72,21 +72,21 @@ abstract class AbstractHttp
     public $url;
     
     /**
-     * Api Key as provided in User Account on sofort.com
+     * API-Key as provided in user account on sofort.com
      *
      * @var string
      */
     protected $_apiKey = '';
     
     /**
-     * Complete Config Key as provided in User Account on sofort.com
+     * Complete config-key as provided in user account on sofort.com
      *
      * @var string
      */
     protected $_configKey = '';
     
     /**
-     * Project ID from sofort.com
+     * Project-ID from sofort.com
      *
      * @var string
      */
@@ -100,7 +100,7 @@ abstract class AbstractHttp
     protected $_response = '';
     
     /**
-     * User ID from sofort.com
+     * User-ID from sofort.com
      *
      * @var string
      */
@@ -120,7 +120,10 @@ abstract class AbstractHttp
         $this->url = $url;
         $this->compression = $compression;
         $this->proxy = $proxy;
+        
+        return $this;
     }
+    
     
     /**
      * Send data to server with POST request
@@ -132,10 +135,11 @@ abstract class AbstractHttp
      */
     public abstract function post($data, $url = null, $headers = null);
     
+    
     /**
      * HTTP error handling
      *
-     * @return array(code, message, response[if available])
+     * @return array(code, message, response) [if available]
      */
     public function getHttpCode()
     {
@@ -240,7 +244,7 @@ abstract class AbstractHttp
     
     
     /**
-     * Setter for ConfigKey and parsing ConfigKey into userId, ProjectId, apiKey
+     * Setter for configKey and parsing configKey into userId, projectId and apiKey
      *
      * @param string $configKey
      * @return void
@@ -254,7 +258,7 @@ abstract class AbstractHttp
     
     
     /**
-     * Setting Headers to be sent
+     * Setting headers to be sent
      *
      * @return void
      */

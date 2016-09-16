@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -64,7 +64,7 @@ class HttpSocket extends AbstractHttp
         
         preg_match('#^(.+?)\r\n\r\n(.*)#ms', $return, $body);
         
-        //get status code
+        // get status code
         preg_match('#HTTP/1.*([0-9]{3}).*#i', $body[1], $status);
         $this->info['http_code'] = $status[1];
         $this->httpStatus = $status[1];
@@ -83,7 +83,7 @@ class HttpSocket extends AbstractHttp
      */
     protected function _socketRequest($uri, $out)
     {
-        //connect to webservice
+        // connect to webservice
         $ssl = ($this->scheme === 'https') ? 'ssl://' : '';
         $port = ($this->scheme === 'http') ? 80 : 443;
         
@@ -93,11 +93,11 @@ class HttpSocket extends AbstractHttp
             return false;
         }
         
-        //send data
+        // send data
         stream_set_timeout($fp, 15);
         fwrite($fp, $out);
         
-        //read response
+        // read response
         $return = '';
         
         while (!feof($fp)) {

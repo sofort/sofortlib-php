@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -14,7 +14,7 @@ class Refund extends Multipay
 {
     
     /**
-     * API Version
+     * API version
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class Refund extends Multipay
     protected $_refund_count = 0;
     
     /**
-     * Root Tag for the XML to be rendered
+     * Root tag for the XML to be rendered
      *
      * @var string
      */
@@ -38,7 +38,7 @@ class Refund extends Multipay
     /**
      * Add a new refund to this message
      *
-     * @param string $transaction transaction id of transfer you want to refund
+     * @param string $transaction transaction-ID of transfer you want to refund
      * @param float $amount amount of money to refund, less or equal to amount of original transfer
      * @param string $comment (optional) comment that will be displayed in admin-menu later
      * @return Refund
@@ -184,7 +184,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Recipient Bank Name
+     * Getter for recipient bank name
      *
      * @param int $i (default 0)
      * @return bool|string
@@ -200,7 +200,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Recipient Bic
+     * Getter for recipient BIC
      *
      * @param int $i (default 0)
      * @return bool|string
@@ -216,7 +216,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Recipient Holder
+     * Getter for recipient holder
      *
      * @param int $i (default 0)
      * @return bool|string
@@ -232,7 +232,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Recipient Iban
+     * Getter for recipient IBAN
      *
      * @param int $i (default 0)
      * @return bool|string
@@ -248,7 +248,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Sender (Bic)
+     * Getter for sender (BIC)
      *
      * @return bool|string
      */
@@ -263,7 +263,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Sender (Holder)
+     * Getter for sender (holder)
      *
      * @return bool|string
      */
@@ -278,7 +278,7 @@ class Refund extends Multipay
     
     
     /**
-     * Getter for Sender (Iban)
+     * Getter for sender (IBAN)
      *
      * @return bool|string
      */
@@ -460,7 +460,7 @@ class Refund extends Multipay
     
     
     /**
-     * Handle Errors occurred
+     * Handle errors occurred
      *
      * @return void
      */

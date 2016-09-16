@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -14,7 +14,7 @@ class Billcode extends PaycodeAbstract
     protected $_codetype = 'bill';
     
     /**
-     * Root Tag for the XML to be rendered
+     * Root tag for the XML to be rendered
      *
      * @var string $_rootTag
      */
@@ -22,7 +22,7 @@ class Billcode extends PaycodeAbstract
     
     
     /**
-     * wrapper to set the Project ID and to call the parent method (sendRequest)
+     * wrapper to set the project-ID and to call the parent method (sendRequest)
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class Billcode extends PaycodeAbstract
     
     
     /**
-     * AbortURL is not available in Billcode, Superclass' method will be overwritten
+     * AbortURL is not available in Billcode, superclass' method will be overwritten
      *
      * @see SofortLibAbstract::setAbortUrl()
      * @param string $abortUrl
@@ -70,7 +70,7 @@ class Billcode extends PaycodeAbstract
     
     
     /**
-     * SuccessURL is not available in Billcode, Superclass' method will be overwritten
+     * SuccessURL is not available in Billcode, superclass' method will be overwritten
      *
      * @see SofortLibAbstract::setSuccessUrl()
      * @param string $successUrl
@@ -84,7 +84,7 @@ class Billcode extends PaycodeAbstract
     
     
     /**
-     * TimeoutURL is not available in Billcode, Superclass' method will be overwritten
+     * TimeoutURL is not available in Billcode, superclass' method will be overwritten
      *
      * @see SofortLibAbstract::setTimeoutUrl()
      * @param string $timeoutUrl

@@ -3,28 +3,28 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
  *
  * Abstract Data Handler
  *
- * Handles the SofortLibs data-input and output. For the moment we only
- * offer an XML-Handler, others (i.e. JSON) are possible too.
+ * Handles the SofortLibs data-input and output. At the moment this library only offers a XML-Handler, others
+ * (i.e. JSON) are possible, too.
  */
 abstract class AbstractDataHandler
 {
     
     /**
-     * Api Key as provided in User Account on sofort.com
+     * API-Key as provided in user account on sofort.com
      *
      * @var string
      */
     protected $_apiKey = '';
     
     /**
-     * Complete Config Key as provided in User Account on sofort.com
+     * Complete Config-Key as provided in user account on sofort.com
      *
      * @var string
      */
@@ -33,40 +33,40 @@ abstract class AbstractDataHandler
     /**
      * Object for the type of the connection, HTTP, others might follow
      *
-     * @var object
+     * @var AbstractHttp
      */
     protected $_Connection = null;    // http instance
     
     /**
-     * Object for the Logging.
+     * Object for the logging.
      *
      * @var object
      */
     protected $_Logger = null;    // Logger instance
     
     /**
-     * Project ID from sofort.com
+     * Project-ID from sofort.com
      *
      * @var string
      */
     protected $_projectId = '';
     
     /**
-     * Contains the Raw Request Data
+     * Contains the raw request data
      *
      * @var array, string
      */
     protected $_rawRequest = '';
     
     /**
-     * Provides the naked response returned by the API or (if no answer was received an Error Code).
+     * Provides the naked response returned by the API or (if no answer was received) an Error Code.
      *
      * @var array, string
      */
     protected $_rawResponse = '';
     
     /**
-     * Contains the request Data, that has been sent to the API
+     * Contains the request data, that has been sent to the API
      *
      * @var array
      */
@@ -80,7 +80,7 @@ abstract class AbstractDataHandler
     protected $_response = array();
     
     /**
-     * User ID from sofort.com
+     * User-ID from sofort.com
      *
      * @var string
      */
@@ -99,7 +99,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the ApiKey
+     * Getter for the apiKey
      *
      * @return string
      */
@@ -121,7 +121,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the ProjectId
+     * Getter for the projectId
      *
      * @return string
      */
@@ -132,7 +132,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the raw Request Data
+     * Getter for the raw request data
      *
      * @return string
      */
@@ -143,7 +143,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the raw Response Data
+     * Getter for the raw response data
      *
      * @return string
      */
@@ -154,7 +154,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the Request
+     * Getter for the request
      *
      * @return mixed
      */
@@ -165,7 +165,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Getter for the Response
+     * Getter for the response
      *
      * @return mixed
      */
@@ -193,7 +193,7 @@ abstract class AbstractDataHandler
     
     
     /**
-     * Setter for the ApiKey
+     * Setter for the apiKey
      *
      * @param string $apiKey
      * @return AbstractDataHandler $this

@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -16,7 +16,7 @@ class IdealBanks extends AbstractWrapper
     const IDEAL_BANKS_URL = 'https://www.sofort.com/payment/ideal/banks';
     
     /**
-     * Array for the banks and Ids returned from the API
+     * Array for the banks and IDs returned from the API
      *
      * @var array
      */

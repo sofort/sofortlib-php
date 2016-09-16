@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -52,9 +52,15 @@ class Ideal extends Multipay
      */
     protected $_paymentUrl = self::IDEAL_URL;
     
+    /**
+     * Container for the hash function to be used
+     *
+     * @var string
+     */
+    private $_hashFunction;
     
     /**
-     * Constructor for SofortLibIdeal
+     * Constructor for Ideal
      *
      * @param string $configKey
      * @param string $password
@@ -62,6 +68,7 @@ class Ideal extends Multipay
      */
     public function __construct($configKey, $password, $hashFunction = 'sha1')
     {
+        parent::__construct($configKey);
         list($userId, $projectId) = explode(':', $configKey);
         $this->_password = $password;
         $this->_userId = $this->_parameters['user_id'] = $userId;
@@ -205,6 +212,8 @@ class Ideal extends Multipay
     public function setSenderAccountNumber($senderAccountNumber)
     {
         $this->_parameters['sender_account_number'] = $senderAccountNumber;
+        
+        return $this;
     }
     
     

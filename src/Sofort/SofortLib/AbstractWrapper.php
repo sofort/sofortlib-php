@@ -10,15 +10,14 @@ if (!defined('SOFORTLIB_VERSION')) {
 }
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
  *
  * Base class for SOFORT XML-Api
  *
- * This class implements basic http authentication and an xml-parser
- * for parsing response messages
+ * This class implements basic http authentication and an xml-parser for parsing response messages
  *
  * Requires libcurl and openssl
  */
@@ -54,21 +53,21 @@ abstract class AbstractWrapper
     protected $_apiVersion = '1.0';
     
     /**
-     * Api Key as provided in User Account on sofort.com
+     * API-Key as provided in user account on sofort.com
      *
      * @var string
      */
     protected $_apiKey = '';
     
     /**
-     * Complete Config Key as provided in User Account on sofort.com
+     * Complete config-key as provided in user account on sofort.com
      *
      * @var string
      */
     protected $_configKey = '';
     
     /**
-     * Object for the Data Handler (usually XML-Data Handler)
+     * Object for the data handler (usually XML-data handler)
      *
      * @var object
      */
@@ -77,7 +76,7 @@ abstract class AbstractWrapper
     /**
      * Object for the logger
      *
-     * @var object
+     * @var AbstractLoggerHandler
      */
     protected $_Logger = null;
     
@@ -96,14 +95,14 @@ abstract class AbstractWrapper
     protected $_products = array('global', 'su');
     
     /**
-     * Project ID from sofort.com
+     * Project-ID from sofort.com
      *
      * @var string
      */
     protected $_projectId = '';
     
     /**
-     * Contains the request Data, that has been sent to the API
+     * Contains the request data, that has been sent to the API
      *
      * @var array
      */
@@ -124,7 +123,7 @@ abstract class AbstractWrapper
     protected $_rootTag = '';
     
     /**
-     * User ID from sofort.com
+     * User-ID from sofort.com
      *
      * @var string
      */
@@ -155,7 +154,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for ConfigKey
+     * Getter for configKey
      *
      * @return string
      */
@@ -184,7 +183,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for the DataHandler
+     * Getter for the dataHandler
      *
      * @return object|null
      */
@@ -251,7 +250,7 @@ abstract class AbstractWrapper
         
         $returnArray = array();
         
-        //return global + selected payment method
+        // return global + selected payment method
         foreach ($supportedPaymentMethods as $pm) {
             if ($this->_getPaymentMethodAllPmGlobal($paymentMethod, $pm) && array_key_exists($pm, $message)) {
                 $returnArray = array_merge($returnArray, $message[$pm]);
@@ -263,7 +262,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for LogHandler
+     * Getter for logHandler
      *
      * @return AbstractLoggerHandler
      */
@@ -285,7 +284,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for the raw Request Data
+     * Getter for the raw request data
      *
      * @return mixed
      */
@@ -296,7 +295,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for the raw Response Data
+     * Getter for the raw response data
      *
      * @return mixed
      */
@@ -307,7 +306,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for the Request Data
+     * Getter for the request data
      *
      * @return mixed
      */
@@ -318,7 +317,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Getter for the Response
+     * Getter for the response
      *
      * @return array
      */
@@ -349,7 +348,7 @@ abstract class AbstractWrapper
         
         $returnArray = array();
         
-        //return global + selected payment method
+        // return global + selected payment method
         foreach ($supportedPaymentMethods as $pm) {
             if (($paymentMethod == 'all' || $pm == 'global' || $paymentMethod == $pm) && array_key_exists($pm,
                     $message)
@@ -491,7 +490,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * SendRequest sends Request (array) to the DataHandler and gets Response (array)
+     * SendRequest sends request (array) to the dataHandler and gets response (array)
      *
      * @return void
      */
@@ -516,9 +515,8 @@ abstract class AbstractWrapper
     
     
     /**
-     * The customer will be redirected to this url if he uses the
-     * abort link on the payment form, should redirect him back to
-     * his cart or to the payment selection page
+     * The customer will be redirected to this url if he uses the abort link on the payment form, should redirect
+     * him back to his cart or to the payment selection page
      *
      * @param string $abortUrl url for aborting the transaction
      * @return AbstractWrapper $this
@@ -546,7 +544,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Setter for ConfigKey and parsing ConfigKey into userId, projectId, apiKey
+     * Setter for ConfigKey and parsing ConfigKey into userId, projectId and apiKey
      *
      * @param string $configKey
      * @return AbstractWrapper $this
@@ -561,7 +559,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Setter for Currency eg. EUR
+     * Setter for currency eg. EUR
      *
      * @param string $currency
      * @return AbstractWrapper $this
@@ -575,7 +573,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Setter for the DataHandler
+     * Setter for the dataHandler
      *
      * @param AbstractDataHandler $Handler
      * @return AbstractWrapper $this
@@ -592,7 +590,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Set Errors
+     * Set errors
      * later use getError(), getErrors() or isError() to retrieve them
      *
      * @param string $message - detailed information about the error
@@ -645,7 +643,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Setter for LogHandler
+     * Setter for logHandler
      *
      * @param AbstractLoggerHandler $Logger
      * @return AbstractWrapper $this
@@ -659,7 +657,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Sets the notification Email-address and it's attributes
+     * Sets the notification email-address and it's attributes
      *
      * @param string $notificationAddress
      * @param string $notifyOn Comma separated (notification on: loss|pending|received|refunded)
@@ -685,7 +683,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Setter for Parameter Array
+     * Setter for parameter array
      *
      * @param array $parameters
      * @return AbstractWrapper $this
@@ -713,9 +711,8 @@ abstract class AbstractWrapper
     
     
     /**
-     * The customer will be redirected to this url after a successful
-     * transaction, this should be a page where a short confirmation is
-     * displayed
+     * The customer will be redirected to this url after a successful transaction, this should be a page where a short
+     * confirmation is displayed
      *
      * @param string $successUrl the url after a successful transaction
      * @param bool $redirect (default true)
@@ -731,8 +728,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * If the customer takes too much time or if your timeout is set too short
-     * he will be redirected to this page
+     * If the customer takes too much time or if your timeout is set too short he will be redirected to this page
      *
      * @param string $timeoutUrl url
      * @return AbstractWrapper $this
@@ -762,7 +758,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Handle Errors and Warnings occurred
+     * Handle errors and warnings which occurred
      *
      * @return void
      */
@@ -801,8 +797,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Set the type of notification and the address where it should be sent to
-     * being sent to.
+     * Set the type of notification and the address where it should be sent to being sent to.
      *
      * @param string $notificationAddress email address or url
      * @param string $notificationType (url|email)
@@ -840,7 +835,7 @@ abstract class AbstractWrapper
     
     
     /**
-     * Helper function to compare given and supported Payment Method
+     * Helper function to compare given and supported payment method
      *
      * @param string $paymentMethod
      * @param string $pm
@@ -874,8 +869,8 @@ abstract class AbstractWrapper
     
     
     /**
-     * Helper to iterate through an array of error or warning messages to find out whether
-     * an error/warning occurred or not.
+     * Helper to iterate through an array of error or warning messages to find out whether an error/warning occurred
+     * or not.
      *
      * @param array $message
      * @return bool

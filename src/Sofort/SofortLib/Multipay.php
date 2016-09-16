@@ -3,14 +3,14 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
  *
  * Abstract Multipay Class
  *
- * provides attributes and methods for Invoice and SofortUeberweisung
+ * provides attributes and methods for SofortUeberweisung
  */
 abstract class Multipay extends AbstractWrapper
 {
@@ -21,7 +21,7 @@ abstract class Multipay extends AbstractWrapper
     protected $_paymentUrl;
     
     /**
-     * Root Tag for the XML to be rendered
+     * Root tag for the XML to be rendered
      *
      * @var string
      */
@@ -36,9 +36,8 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * After configuration and sending this request
-     * you can use this function to redirect the customer
-     * to the payment form
+     * After configuration and sending this request you can use this function to redirect the customer to the payment
+     * form
      *
      * @return string url of payment form
      */
@@ -68,9 +67,7 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * After configuration and sending this request
-     * you can use this function to get the transactions
-     * transaction ID
+     * After configuration and sending this request you can use this function to get the transactions transaction-ID
      *
      * @return string
      */
@@ -85,7 +82,7 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Setter for Amount
+     * Setter for amount
      *
      * @param float $amount
      * @return Multipay $this
@@ -100,7 +97,6 @@ abstract class Multipay extends AbstractWrapper
     
     /**
      * Set the email address of the customer
-     * this will be used for sofortvorkasse and sofortrechnung
      *
      * @param string $customersEmail email address
      * @return Multipay $this
@@ -142,7 +138,7 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Setter for Reasons
+     * Setter for reasons
      *
      * @param string $reason1
      * @param string $reason2 (optional) defaults to empty string
@@ -263,10 +259,9 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Timeout how long this transaction configuration will be valid for
-     * this is the time between the generation of the payment url and
-     * the user completing the form, should be at least two to three minutes
-     * defaults to unlimited if not set
+     * Timeout how long this transaction configuration will be valid for this is the time between the generation of the
+     * payment url and the user completing the form, should be at least two to three minutes defaults to unlimited if
+     * not set
      *
      * @param int $timeout timeout in seconds
      * @return Multipay $this
@@ -280,7 +275,7 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Add another variable this can be your internal order id or multiple variables
+     * Add another variable this can be your internal order-ID or multiple variables
      *
      * @param string|array $userVariable the contents of the variable
      * @return Multipay $this
@@ -298,9 +293,8 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Set the version of this payment module
-     * this is helpful so the support staff can easily
-     * find out if someone uses an outdated module
+     * Set the version of this payment module 
+     * this is helpful so the support staff can easily find out if someone uses an outdated module
      *
      * @param string $version version string of your module
      * @return Multipay $this
@@ -314,7 +308,7 @@ abstract class Multipay extends AbstractWrapper
     
     
     /**
-     * Setter for Amount
+     * Setter for amount
      *
      * @param float $amount
      * @return Multipay $this
