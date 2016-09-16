@@ -21,7 +21,6 @@ $Sofortueberweisung->setAbortUrl('YOUR_ABORT_URL');
 // $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'pending');
 // $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'received');
 // $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'refunded');
-// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'untraceable');
 $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 //$Sofortueberweisung->setCustomerprotection(true);
 
