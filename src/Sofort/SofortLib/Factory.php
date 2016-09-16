@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -14,7 +14,7 @@ class Factory
 {
     
     /**
-     * Defines and includes the DataHandler
+     * Defines and includes the dataHandler
      *
      * @param string $configKey
      * @return XmlDataHandler
@@ -28,7 +28,7 @@ class Factory
     
     
     /**
-     * Defines the Http Connection to be used
+     * Defines the http connection to be used
      *
      * @param string $data
      * @param string|bool $url

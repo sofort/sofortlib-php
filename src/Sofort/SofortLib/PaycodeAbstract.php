@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -35,7 +35,7 @@ abstract class PaycodeAbstract extends Multipay
     protected $_codeUrl;
     
     /**
-     * Root Tag for the XML to be rendered
+     * Root tag for the XML to be rendered
      *
      * @var string
      */
@@ -73,7 +73,7 @@ abstract class PaycodeAbstract extends Multipay
     
     
     /**
-     * Setter for the End Date (Bill/Paycode ist valid until that date)
+     * Setter for the end date (Bill/Paycode ist valid until that date)
      *
      * @param string $date YYYY-MM-DD hh:mm:ss
      * @return PaycodeAbstract
@@ -87,7 +87,7 @@ abstract class PaycodeAbstract extends Multipay
     
     
     /**
-     * Setter for the Senders Bank Code
+     * Setter for the senders bank code
      *
      * @param string $bank_code
      * @return PaycodeAbstract
@@ -101,7 +101,7 @@ abstract class PaycodeAbstract extends Multipay
     
     
     /**
-     * Setter for the Start Date (Bill/Paycode ist valid from that date)
+     * Setter for the start date (Bill/Paycode ist valid from that date)
      *
      * @param string $date YYYY-MM-DD hh:mm:ss
      * @return PaycodeAbstract

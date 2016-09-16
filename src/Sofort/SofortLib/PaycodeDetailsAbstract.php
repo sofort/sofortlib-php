@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -21,7 +21,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     protected $_root = 'paycode';
     
     /**
-     * Root Tag for the XML-Request
+     * Root tag for the XML-Request
      *
      * @var string
      */
@@ -29,7 +29,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Bill/Paycodes Amount
+     * Getter for the Bill/Paycodes amount
      *
      * @return string|bool
      */
@@ -40,7 +40,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Bill/Paycodes Currency Code (EUR|...)
+     * Getter for the Bill/Paycodes currency code (EUR|...)
      *
      * @return string
      */
@@ -62,7 +62,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Bill/Paycodes Language Code (de|...)
+     * Getter for the Bill/Paycodes language code (de|...)
      *
      * @return string
      */
@@ -73,7 +73,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Project ID the Bill/Paycode belongs to
+     * Getter for the project-ID the Bill/Paycode belongs to
      *
      * @return string|bool
      */
@@ -84,7 +84,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Bill/Paycodes Reason (0 => Reason line 1, 1 => Reason line 2)
+     * Getter for the Bill/Paycodes reason (0 => reason line 1, 1 => reason line 2)
      *
      * @param int $n (default 0)
      * @return mixed|bool
@@ -96,7 +96,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Senders Bank Code
+     * Getter for the senders bank code
      *
      * @return string
      */
@@ -107,7 +107,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Senders Bic
+     * Getter for the senders BIC
      *
      * @return string
      */
@@ -118,7 +118,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Senders Country Code
+     * Getter for the senders country code
      *
      * @return string
      */
@@ -129,7 +129,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Bill/Paycodes Start Date
+     * Getter for the Bill/Paycodes start date
      *
      * @return string
      */
@@ -173,7 +173,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Getter for the Transaction ID the Bill/Paycode belongs to
+     * Getter for the transaction-ID the Bill/Paycode belongs to
      *
      * @return string|bool
      */
@@ -209,7 +209,7 @@ abstract class PaycodeDetailsAbstract extends AbstractWrapper
     
     
     /**
-     * Returns Data from the response array.
+     * Returns data from the response array.
      *
      * @param string $tag
      * @param string $parentTag

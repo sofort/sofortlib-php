@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib\Xml;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -49,7 +49,7 @@ class XmlToArrayNode
     private $_open = true;
     
     /**
-     * Parent XML to Array Node
+     * Parent XML to arrayNode
      * @var null
      */
     private $_ParentXmlToArrayNode = null;
@@ -217,7 +217,7 @@ class XmlToArrayNode
     
     
     /**
-     * Counts the Children of an array and returns them in an associative array
+     * Counts the children of an array and returns them in an associative array
      *
      * @param array $Children
      * @return array

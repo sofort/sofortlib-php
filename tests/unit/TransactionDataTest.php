@@ -454,10 +454,10 @@ class TransactionDataTest extends TestWrapper
                         "@attributes" => array(),
                     ),
                     "su" => array(
-//						"consumer_protection" => array(
-//							"@data" => "1",
-//							"@attributes" => array(),
-//						),
+//                        "consumer_protection" => array(
+//                            "@data" => "1",
+//                            "@attributes" => array(),
+//                        ),
                         "@data" => "",
                         "@attributes" => array(),
                     ),

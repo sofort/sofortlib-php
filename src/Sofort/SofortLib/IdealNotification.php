@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -14,7 +14,7 @@ class IdealNotification
 {
     
     /**
-     * Holds the Notification Data
+     * Holds the notification data
      *
      * @var array
      */
@@ -28,7 +28,7 @@ class IdealNotification
     private $_hashCheck = false;
     
     /**
-     * Container for the has function to be used
+     * Container for the hash function to be used
      *
      * @var string
      */
@@ -42,7 +42,7 @@ class IdealNotification
     private $_password;
     
     /**
-     * Project ID from sofort.com
+     * Project-ID from sofort.com
      *
      * @var string
      */
@@ -56,7 +56,7 @@ class IdealNotification
     private $_statusReason;
     
     /**
-     * User ID from sofort.com
+     * User-ID from sofort.com
      *
      * @var string
      */
@@ -104,7 +104,7 @@ class IdealNotification
     
     
     /**
-     * Get the Notification details
+     * Get the notification details
      *
      * @param string $request (POST-Data)
      * @return IdealNotification $this
@@ -115,7 +115,7 @@ class IdealNotification
             $this->_statusReason = $request['status_reason'];
         }
         
-        //ideal
+        // ideal
         $fields = array(
             'transaction',
             'user_id',
@@ -239,7 +239,7 @@ class IdealNotification
             return md5($data);
         }
         
-        //mcrypt installed?
+        // mcrypt installed?
         if (function_exists('hash') && in_array($hashFunction, hash_algos())) {
             return hash($hashFunction, $data);
         }

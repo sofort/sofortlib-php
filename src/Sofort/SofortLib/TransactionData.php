@@ -3,16 +3,15 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
  *
- * This class is  for retrieving information about transactions,
- * you can search by transaction-id or by date
+ * This class is  for retrieving information about transactions, you can search by transaction-id or by date
  *
- * eg: $SofortLibTransactionData = new SofortLibTransactionData('yourapikey');
- *
+ * eg:
+ * $SofortLibTransactionData = new SofortLibTransactionData('yourapikey');
  * $SofortLibTransactionData->addTransaction('1234-456-789654-31321')->sendRequest();
  *
  * echo $SofortLibTransactionData->getStatus();
@@ -26,9 +25,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Use this function if you want to request
-     * detailed information about several transactions
-     * at once
+     * Use this function if you want to request detailed information about several transactions at once
      *
      * @param string $transaction
      * @return TransactionData $this
@@ -237,10 +234,10 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Returns the project id of a transaction
+     * Returns the project-id of a transaction
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
-     * @return int project id
+     * @return int projectId
      */
     public function getProjectId($i = 0)
     {
@@ -491,7 +488,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Returns the transaction id of a transaction
+     * Returns the transaction-ID of a transaction
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
      * @return string transaction id
@@ -593,7 +590,8 @@ class TransactionData extends AbstractWrapper
      *
      * @param string $statusReason (not_credited_yet|not_credited|refunded|compensation|
      *                                credited|canceled|confirm_invoice|confirmation_period_expired|
-     *                                wait_for_money|partially_credited|overpayment|rejected|sofort_bank_account_needed|prefinanced|acquired|late_succeed)
+     *                                wait_for_money|partially_credited|overpayment|rejected|
+     *                                sofort_bank_account_needed|prefinanced|acquired|late_succeed)
      * @return TransactionData
      */
     public function setStatusReason($statusReason)
@@ -605,8 +603,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * You can request all transactions of a certain time
-     * period
+     * You can request all transactions of a certain time period
      *
      * use setNumber() to limit the results
      *
@@ -716,7 +713,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Checks for Elements that can have n Elements, Returns the "nth" Element
+     * Checks for elements that can have "n" elements, returns the "nth" Element
      *
      * @param int $i
      * @param string $tag
@@ -731,7 +728,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Returns the Data of the given tag
+     * Returns the data of the given tag
      *
      * @param int $i
      * @param string $tag
@@ -744,7 +741,7 @@ class TransactionData extends AbstractWrapper
     
     
     /**
-     * Returns the nth Array of the Status History item
+     * Returns the nth array of the status history item
      *
      * @param int $i
      * @param string $tag

@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -21,11 +21,12 @@ class Sofortueberweisung extends Multipay
     {
         parent::__construct($configKey);
         $this->_parameters['su'] = array();
+        return $this;
     }
     
     
     /**
-     * Setter for Customer Protection if possible for customers
+     * Setter for customer protection if possible for customers
      *
      * @param bool $customerProtection (default true)
      * @return Sofortueberweisung $this
@@ -43,7 +44,7 @@ class Sofortueberweisung extends Multipay
     
     
     /**
-     * Handle Errors occurred
+     * Handle errors occurred
      *
      * @return void
      */

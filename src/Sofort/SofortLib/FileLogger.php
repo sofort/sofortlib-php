@@ -3,7 +3,7 @@
 namespace Sofort\SofortLib;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -16,14 +16,14 @@ class FileLogger extends AbstractLoggerHandler
 {
     
     /**
-     * File Handler
+     * File handler
      *
      * @var resource $fp
      */
     public $fp = null;
     
     /**
-     * Maximum size of a log file in Bytes
+     * Maximum size of a log file in bytes
      *
      * @var int $maxFilesize
      */
@@ -37,7 +37,7 @@ class FileLogger extends AbstractLoggerHandler
     protected $_errorLogfilePath = false;
     
     /**
-     * Path to Logfile
+     * Path to logfile
      *
      * @var string $_logfilePath
      */
@@ -53,7 +53,7 @@ class FileLogger extends AbstractLoggerHandler
     
     /**
      * Constructor
-     * Setting the LogfilePaths
+     * Setting the logfilePaths
      *
      * @param string $path
      */
@@ -136,8 +136,8 @@ class FileLogger extends AbstractLoggerHandler
     
     
     /**
-     * Copy the content of the logfile to a backup file if file size got too large
-     * Put the old log file into a tarball for later reference
+     * Copy the content of the logfile to a backup file if file size got too large Put the old log file into a tarball
+     * for later reference
      *
      * @return bool
      */

@@ -6,7 +6,7 @@ use Sofort\SofortLib\Xml\ArrayToXml;
 use Sofort\SofortLib\Xml\XmlToArray;
 
 /**
- * @copyright 2010-2015 SOFORT GmbH
+ * @copyright 2010-2016 SOFORT GmbH
  *
  * @license Released under the GNU LESSER GENERAL PUBLIC LICENSE (Version 3)
  * @license http://www.gnu.org/licenses/lgpl.html
@@ -67,7 +67,7 @@ class XmlDataHandler extends AbstractDataHandler
     
     
     /**
-     * Sending Data to connection and returning results
+     * Sending data to connection and returning results
      *
      * @param string $data
      * @return string
