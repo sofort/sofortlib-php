@@ -13,7 +13,7 @@ namespace Sofort\SofortLib;
  *
  * eg: $SofortLibTransactionData = new SofortLibTransactionData('yourapikey');
  *
- * $SofortLibTransactionData->setTransaction('1234-456-789654-31321')->sendRequest();
+ * $SofortLibTransactionData->addTransaction('1234-456-789654-31321')->sendRequest();
  *
  * echo $SofortLibTransactionData->getStatus();
  */
@@ -55,7 +55,7 @@ class TransactionData extends AbstractWrapper
      * Returns the total amount of a transaction
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
-     * @return double amount
+     * @return bool|double amount
      */
     public function getAmount($i = 0)
     {
@@ -67,7 +67,7 @@ class TransactionData extends AbstractWrapper
      * Refund, if a transaction was refunded. amount = amountRefunded if everything was refunded
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
-     * @return double amount
+     * @return bool|double amount
      */
     public function getAmountRefunded($i = 0)
     {
@@ -121,7 +121,7 @@ class TransactionData extends AbstractWrapper
      * Returns the transactions exchange rate
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
-     * @return double exchange_rate
+     * @return bool|double exchange_rate
      */
     public function getCostsExchangeRate($i = 0)
     {
@@ -133,7 +133,7 @@ class TransactionData extends AbstractWrapper
      * Returns the transactions Fees (Part of Costs)
      *
      * @param int $i if you request multiple transactions at once you can set the number here (default 0)
-     * @return double fees
+     * @return bool|double fees
      */
     public function getCostsFees($i = 0)
     {
@@ -674,7 +674,7 @@ class TransactionData extends AbstractWrapper
      * @param string $tag
      * @param string $parentTag (optional)
      * @param int|bool $n (optional)
-     * @return bool
+     * @return mixed|bool
      */
     private function _extractValue($i, $tag, $parentTag = '', $n = false)
     {
@@ -707,7 +707,7 @@ class TransactionData extends AbstractWrapper
      * @param int $i
      * @param string $tag
      * @param string $parentTag
-     * @return bool
+     * @return mixed|bool
      */
     private function _extractValueGroupedData($i, $tag, $parentTag)
     {
@@ -722,7 +722,7 @@ class TransactionData extends AbstractWrapper
      * @param string $tag
      * @param string $parentTag
      * @param int $n
-     * @return bool
+     * @return mixed|bool
      */
     private function _extractValueGroupedDataNumbered($i, $tag, $parentTag, $n)
     {
@@ -735,7 +735,7 @@ class TransactionData extends AbstractWrapper
      *
      * @param int $i
      * @param string $tag
-     * @return bool
+     * @return mixed|bool
      */
     private function _extractValueSimpleTag($i, $tag)
     {
