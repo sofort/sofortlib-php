@@ -14,14 +14,13 @@ $Sofortueberweisung->setCurrencyCode('EUR');
 $Sofortueberweisung->setReason('Testueberweisung', 'Verwendungszweck');
 $Sofortueberweisung->setSuccessUrl('YOUR_SUCCESS_URL', true); // i.e. http://my.shop/order/success
 $Sofortueberweisung->setAbortUrl('YOUR_ABORT_URL');
-//$Sofortueberweisung->setSenderSepaAccount('SFRTDE20XXX', 'DE06000000000023456789', 'Max Mustermann');
-//$Sofortueberweisung->setSenderCountryCode('DE');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss,pending');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'pending');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'received');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'refunded');
-//$Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'untraceable');
+// $Sofortueberweisung->setSenderSepaAccount('SFRTDE20XXX', 'DE06000000000023456789', 'Max Mustermann');
+// $Sofortueberweisung->setSenderCountryCode('DE');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss,pending');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'loss');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'pending');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'received');
+// $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL', 'refunded');
 $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 //$Sofortueberweisung->setCustomerprotection(true);
 

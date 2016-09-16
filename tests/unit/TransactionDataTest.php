@@ -1398,7 +1398,6 @@ class TransactionDataTest extends TestWrapper
                     'pending',
                     'received',
                     'refunded',
-                    'untraceable'
                 )
             )
         );

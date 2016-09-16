@@ -558,7 +558,7 @@ class TransactionData extends AbstractWrapper
     /**
      * Request for transactions with certain status
      *
-     * @param string $status (loss|pending|received|refunded|untraceable)
+     * @param string $status (loss|pending|received|refunded)
      * @return TransactionData
      */
     public function setStatus($status)
