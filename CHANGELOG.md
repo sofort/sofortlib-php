@@ -2,13 +2,28 @@
 SofortLib PHP @ SOFORT GmbH
 =========================
 
-v3.0.4
-----------------
+v3.0.6
+------
 Date: 2016-09-16
 
     SOFORT GmbH <integration@sofort.com>
         Fixed https://github.com/sofort/sofortlib-php/issues/10
         Code cleanup and housekeeping
+
+v3.0.5
+------
+Date: 2016-01-21
+
+    SOFORT GmbH <integration@sofort.com>
+        Merge pull request #7 from vojtasvoboda/feature/transaction-id-example
+        Update payment example
+
+v3.0.4
+----------------
+Date: 2015-11-26
+
+    SOFORT GmbH <integration@sofort.com>
+        removed static urls from examples
 
 v3.0.3
 ----------------
