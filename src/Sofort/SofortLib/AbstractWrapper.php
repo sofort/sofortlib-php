@@ -271,12 +271,12 @@ abstract class AbstractWrapper
     public function getErrorsString($paymentMethod = 'all', $message = array())
     {
         $errors = $this->getErrors($paymentMethod, $message);
-        
         $strings = array();
+        
         foreach ($errors as $error) {
-            $str = 'Error: ' . $error['code'] . ':' . $error['message'];
-            $strings[] = $str . '.';
+            $strings[] = 'Error: ' . $error['code'] . ':' . $error['message'] . '.';
         }
+        
         return implode(' ', $strings);
     }
     
