@@ -260,6 +260,26 @@ abstract class AbstractWrapper
         return $returnArray;
     }
     
+    /**
+     * Get all errors in a string
+     *
+     * @param string $paymentMethod - 'all', 'sr', 'su' (default "all")
+     * @param array $message (optional) response array
+     * @return string  A string representation of the errors array.
+     * 
+     */
+    public function getErrorsString($paymentMethod = 'all', $message = array())
+    {
+        $errors = $this->getErrors($paymentMethod, $message);
+        $strings = array();
+        
+        foreach ($errors as $error) {
+            $strings[] = 'Error: ' . $error['code'] . ':' . $error['message'] . '.';
+        }
+        
+        return implode(' ', $strings);
+    }
+    
     
     /**
      * Getter for logHandler
