@@ -466,6 +466,8 @@ class Refund extends Multipay
      */
     protected function _handleErrors()
     {
+        parent::_handleErrors();
+
         if (isset($this->_response['refunds'])) {
             if (!isset($this->_response['refunds']['refund'][0])) {
                 $tmp = $this->_response['refunds']['refund'];
