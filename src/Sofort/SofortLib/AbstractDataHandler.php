@@ -40,7 +40,7 @@ abstract class AbstractDataHandler
     /**
      * Object for the logging.
      *
-     * @var object
+     * @var SofortObject
      */
     protected $_Logger = null;    // Logger instance
     

@@ -232,7 +232,7 @@ class IdealTest extends TestWrapper
     public function testSetAbortUrl($provided)
     {
         $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
-        $SofortIdeal->SetAbortUrl($provided);
+        $SofortIdeal->setAbortUrl($provided);
         $received = $SofortIdeal->getParameters();
         $this->assertEquals($provided, $received['user_variable_4']);
     }

@@ -40,7 +40,7 @@ EOD;
         $msg = 'text';
         $this->assertFalse($XmlToArray->log($msg));
         
-        if (!class_exists('Object')) {
+        if (!class_exists('SofortObject')) {
             require_once(dirname(__DIR__) . '/SofortObject.php');
             
             $msg = 'test';
