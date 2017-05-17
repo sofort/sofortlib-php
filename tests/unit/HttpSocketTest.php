@@ -32,11 +32,10 @@ EOT;
     public function testPost()
     {
         /** @var HttpSocket|\PHPUnit_Framework_MockObject_MockObject $MockPost */
-        $MockPost = $this->getMock(
-            '\Sofort\SofortLib\HttpSocket',
-            array('_socketRequest'),
-            array(self::$testapi_url, 'gzip', 'http://www.sofort.com')
-        );
+        $MockPost = $this->getMockBuilder('\Sofort\SofortLib\HttpSocket')
+            ->setMethods(array('_socketRequest'))
+            ->setConstructorArgs(array(self::$testapi_url, 'gzip', 'http://www.sofort.com'))
+            ->getMock();
         
         $MockPost->setConfigKey(self::$configkey);
         $MockPost->expects($this->any())->method('_socketRequest')->will($this->returnValue($this->_response));

@@ -18,8 +18,9 @@ class XmlToArrayNodeTest extends TestWrapper
     {
         $XmlToArrayNode = new XmlToArrayNode($this->_name, $this->_attributes);
         /** @var XmlToArrayNode $mockXmlToArrayNode */
-        $mockXmlToArrayNode = $this->getMock('Sofort\SofortLib\Xml\XmlToArrayNode', array(),
-            array($this->_name, $this->_attributes));
+        $mockXmlToArrayNode = $this->getMockBuilder('Sofort\SofortLib\Xml\XmlToArrayNode')
+            ->setConstructorArgs(array($this->_name, $this->_attributes))
+            ->getMock();
         $XmlToArrayNode->addChild($mockXmlToArrayNode);
         $this->assertAttributeEquals(array($mockXmlToArrayNode), '_children', $XmlToArrayNode);
     }
@@ -53,8 +54,9 @@ class XmlToArrayNodeTest extends TestWrapper
     public function testGetParentXmlToArrayNode()
     {
         $XmlToArrayNode = new XmlToArrayNode($this->_name, $this->_attributes);
-        $mockXmlToArrayNode = $this->getMock('Sofort\SofortLib\Xml\XmlToArrayNode', array(),
-            array($this->_name, $this->_attributes));
+        $mockXmlToArrayNode = $this->getMockBuilder('Sofort\SofortLib\Xml\XmlToArrayNode')
+            ->setConstructorArgs(array($this->_name, $this->_attributes))
+            ->getMock();
         $_ParentXmlToArrayNode = self::_getProperty('_ParentXmlToArrayNode', $this->_classToTest);
         $_ParentXmlToArrayNode->setValue($XmlToArrayNode, $mockXmlToArrayNode);
         $this->assertEquals($mockXmlToArrayNode, $XmlToArrayNode->getParentXmlToArrayNode());
@@ -66,8 +68,9 @@ class XmlToArrayNodeTest extends TestWrapper
         $XmlToArrayNode = new XmlToArrayNode($this->_name, $this->_attributes);
         $this->assertEquals(0, $XmlToArrayNode->hasChildren());
         /** @var XmlToArrayNode $mockXmlToArrayNode */
-        $mockXmlToArrayNode = $this->getMock('Sofort\SofortLib\Xml\XmlToArrayNode', array(),
-            array($this->_name, $this->_attributes));
+        $mockXmlToArrayNode = $this->getMockBuilder('Sofort\SofortLib\Xml\XmlToArrayNode')
+            ->setConstructorArgs(array($this->_name, $this->_attributes))
+            ->getMock();
         $XmlToArrayNode->addChild($mockXmlToArrayNode);
         $this->assertEquals(1, $XmlToArrayNode->hasChildren());
     }
@@ -76,8 +79,9 @@ class XmlToArrayNodeTest extends TestWrapper
     public function testHasParentXmlToArrayNode()
     {
         $XmlToArrayNode = new XmlToArrayNode($this->_name, $this->_attributes);
-        $mockXmlToArrayNode = $this->getMock('Sofort\SofortLib\Xml\XmlToArrayNode', array(),
-            array($this->_name, $this->_attributes));
+        $mockXmlToArrayNode = $this->getMockBuilder('Sofort\SofortLib\Xml\XmlToArrayNode')
+            ->setConstructorArgs(array($this->_name, $this->_attributes))
+            ->getMock();
         $_ParentXmlToArrayNode = self::_getProperty('_ParentXmlToArrayNode', $this->_classToTest);
         $_ParentXmlToArrayNode->setValue($XmlToArrayNode, $mockXmlToArrayNode);
         $this->assertTrue($XmlToArrayNode->hasParentXmlToArrayNode());
@@ -165,8 +169,9 @@ class XmlToArrayNodeTest extends TestWrapper
     {
         $XmlToArrayNode = new XmlToArrayNode($this->_name, $this->_attributes);
         /** @var XmlToArrayNode $mockXmlToArrayNode */
-        $mockXmlToArrayNode = $this->getMock('Sofort\SofortLib\Xml\XmlToArrayNode', array(),
-            array($this->_name, $this->_attributes));
+        $mockXmlToArrayNode = $this->getMockBuilder('Sofort\SofortLib\Xml\XmlToArrayNode')
+            ->setConstructorArgs(array($this->_name, $this->_attributes))
+            ->getMock();
         $XmlToArrayNode->setParentXmlToArrayNode($mockXmlToArrayNode);
         $this->assertAttributeEquals($mockXmlToArrayNode, '_ParentXmlToArrayNode', $XmlToArrayNode);
     }

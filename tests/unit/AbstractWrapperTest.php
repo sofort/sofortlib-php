@@ -114,7 +114,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetData()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $rootTag = self::_getProperty('_rootTag', $this->_classToTest);
         $rootTag->setValue($AbstractWrapperMock, 'multipay');
         $AbstractWrapperMock->setParameters(array('test'));
@@ -128,7 +128,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetDataHandler()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractDataHandler $AbstractDataHandler */
         $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler', array(), '',
             false);
@@ -154,7 +154,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetParameters()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $expected = array('test', 'test2');
         $AbstractWrapperMock->setParameters($test_array = array('test', 'test2'));
         $this->assertEquals($expected, $AbstractWrapperMock->getParameters());
@@ -297,7 +297,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testAbstractSofortLib()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         $AbstractWrapperMock->setParameters(array(array('miep' => 'moep')));
         $this->assertEquals(array(array('miep' => 'moep')), $AbstractWrapperMock->getParameters());
@@ -316,7 +316,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testIsWarning(array $provided, array $expected)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->warnings = $expected;
         
         if (isset($provided[1]) && in_array($provided[1], array('global', 'su', 'sr', 'not'))) {
@@ -339,7 +339,7 @@ class AbstractWrapperTest extends AbstractClassTest
     {
         $configKey = '12345:12345:abcdefghijklmnopqrstuvewxyz123456';
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setConfigKey($configKey);
         $this->assertEquals($AbstractWrapperMock->getConfigKey(), $configKey);
     }
@@ -353,7 +353,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetError(array $provided, $expected)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         if (count($provided) == 4) {
             $AbstractWrapperMock->setError($provided[0], $provided[1], $provided[2], $provided[3]);
@@ -384,7 +384,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetErrors()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         $AbstractWrapperMock->errors = $this->_handledErrors;
         $this->assertEquals($this->_handledErrorsRoot, $AbstractWrapperMock->getErrors());
@@ -397,7 +397,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetLogger()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var FileLogger $FileLogger */
         $FileLogger = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
         $AbstractWrapperMock->setLogger($FileLogger);
@@ -408,7 +408,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetRawRequest()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
         $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
             array(),
@@ -427,7 +427,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetRawResponse()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
         $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
             array(),
@@ -446,7 +446,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetRequest()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $request = self::_getProperty('_request', $this->_classToTest);
         $testdata = 'sometestdata';
         $request->setValue($AbstractWrapperMock, $testdata);
@@ -457,7 +457,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testGetWarnings()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->warnings = $this->_handledWarnings;
         $this->assertEquals($this->_handledWarningsRoot, $AbstractWrapperMock->getWarnings());
     }
@@ -466,9 +466,9 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testLog()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockBuilder('Sofort\SofortLib\FileLogger')->getMock();
         $FileLoggerHandler->expects($this->any())->method('log')->with('log')->will($this->returnValue('log'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -479,9 +479,9 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testLogError()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockBuilder('Sofort\SofortLib\FileLogger')->getMock();
         $FileLoggerHandler->expects($this->any())->method('log')->with('error')->will($this->returnValue('error'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -492,9 +492,9 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testLogWarning()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockBuilder('Sofort\SofortLib\FileLogger')->getMock();
         $FileLoggerHandler->expects($this->any())->method('log')->with('warning')->will($this->returnValue('warning'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -506,7 +506,7 @@ class AbstractWrapperTest extends AbstractClassTest
     {
         $validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
         $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
             array(),
@@ -529,7 +529,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetAbortUrl($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setAbortUrl($provided);
         $received = $AbstractWrapperMock->getParameters();
         $this->assertEquals($provided, $received['abort_url']);
@@ -543,7 +543,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetApiVersion($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setApiVersion($provided);
         $this->assertAttributeEquals($provided, '_apiVersion', $AbstractWrapperMock);
     }
@@ -552,7 +552,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetConfigKey()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $configKey = '12345:12345:abcdefghijklmnopqrstuvewxyz123456';
         $AbstractWrapperMock->setConfigKey($configKey);
         $this->assertEquals($AbstractWrapperMock->getConfigKey(), $configKey);
@@ -566,7 +566,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetCurrencyCode($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setCurrencyCode($provided);
         $received = $AbstractWrapperMock->getParameters();
         $this->assertEquals($provided, $received['currency_code']);
@@ -576,7 +576,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetDataHandler()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
         $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler', array(), '',
             false);
@@ -593,7 +593,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetError(array $provided, array $expected)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $this->assertFalse($AbstractWrapperMock->isError());
         
         if (count($provided) == 4) {
@@ -625,7 +625,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetLogDisabled()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setLogEnabled();
         $AbstractWrapperMock->setLogDisabled();
         $this->assertFalse($AbstractWrapperMock->enableLogging);
@@ -635,7 +635,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetLogEnabled()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setLogDisabled();
         $AbstractWrapperMock->setLogEnabled();
         $this->assertTrue($AbstractWrapperMock->enableLogging);
@@ -645,7 +645,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetLogger()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         /** @var AbstractLoggerHandler $AbstractLoggerHandler */
         $AbstractLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractLoggerHandler');
         $AbstractWrapperMock->setLogger($AbstractLoggerHandler);
@@ -660,7 +660,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetNotificationEmail($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         if (!is_array($provided)) {
             $AbstractWrapperMock->setNotificationEmail($provided);
@@ -681,7 +681,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetNotificationUrl($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         if (!is_array($provided)) {
             $AbstractWrapperMock->setNotificationUrl($provided);
@@ -702,7 +702,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetSuccessUrl($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         
         if (isset($provided[1])) {
             $AbstractWrapperMock->setSuccessUrl($provided[0], $provided[1]);
@@ -719,7 +719,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetParameters()
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $expected = array('test', 'test2');
         $AbstractWrapperMock->setParameters($test_array = array('test', 'test2'));
         $this->assertEquals($expected, $AbstractWrapperMock->getParameters());
@@ -733,7 +733,7 @@ class AbstractWrapperTest extends AbstractClassTest
     public function testSetTimeoutUrl($provided)
     {
         /** @var AbstractWrapper $AbstractWrapperMock */
-        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
+        $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));
         $AbstractWrapperMock->setTimeoutUrl($provided);
         $received = $AbstractWrapperMock->getParameters();
         $this->assertEquals($provided, $received['timeout_url']);
