@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\Logger;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH
@@ -12,11 +12,6 @@ namespace Sofort\SofortLib;
  */
 abstract class AbstractLoggerHandler
 {
-    
-    public function __construct()
-    {
-    }
-    
     
     abstract function log($message, $log = 'log');
 }

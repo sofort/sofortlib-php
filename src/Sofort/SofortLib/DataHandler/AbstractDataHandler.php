@@ -1,6 +1,8 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\DataHandler;
+
+use Sofort\SofortLib\Http\AbstractHttp;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH
@@ -134,7 +136,7 @@ abstract class AbstractDataHandler
     /**
      * Getter for the raw request data
      *
-     * @return string
+     * @return string[]
      */
     public function getRawRequest()
     {
@@ -145,7 +147,7 @@ abstract class AbstractDataHandler
     /**
      * Getter for the raw response data
      *
-     * @return string
+     * @return string[]
      */
     public function getRawResponse()
     {

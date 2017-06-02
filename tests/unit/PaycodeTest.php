@@ -2,6 +2,8 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\DataHandler\AbstractDataHandler;
+
 class PaycodeTest extends TestWrapper
 {
     
@@ -12,7 +14,7 @@ class PaycodeTest extends TestWrapper
         $validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
         $SofortLibPaycode = new Paycode(self::$configkey);
         /** @var AbstractDataHandler $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler',
             array(),
             '',
             false,

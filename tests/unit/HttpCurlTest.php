@@ -2,6 +2,12 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\Http\HttpCurl;
+
+if (!defined('SOFORTLIB_VERSION')) {
+    define('SOFORTLIB_VERSION', '3.0.0');
+}
+
 class HttpCurlTest extends TestWrapper
 {
     
@@ -9,7 +15,7 @@ class HttpCurlTest extends TestWrapper
     {
         /** @var HttpCurl|\PHPUnit_Framework_MockObject_MockObject $MockPost */
         $MockPost = $this->getMock(
-            'Sofort\SofortLib\HttpCurl',
+            'Sofort\SofortLib\Http\HttpCurl',
             array('_curlRequest'),
             array('http://www.sofort.com', 'gzip', 'http://www.sofort.com')
         );

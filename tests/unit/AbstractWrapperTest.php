@@ -2,6 +2,10 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\DataHandler\AbstractDataHandler;
+use Sofort\SofortLib\Logger\AbstractLoggerHandler;
+use Sofort\SofortLib\Logger\FileLogger;
+
 /**
  * Class constructed just to test the methods of the abstract class
  * @author mm
@@ -130,7 +134,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractDataHandler $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler', array(), '',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler', array(), '',
             false);
         $AbstractWrapperMock->setDataHandler($AbstractDataHandler);
         $this->assertEquals($AbstractDataHandler, $AbstractWrapperMock->getDataHandler());
@@ -399,7 +403,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var FileLogger $FileLogger */
-        $FileLogger = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLogger = $this->getMockForAbstractClass('Sofort\SofortLib\Logger\FileLogger');
         $AbstractWrapperMock->setLogger($FileLogger);
         $this->assertEquals($AbstractWrapperMock->getLogger(), $FileLogger);
     }
@@ -410,7 +414,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler',
             array(),
             '',
             false,
@@ -429,7 +433,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler',
             array(),
             '',
             false,
@@ -468,7 +472,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\Logger\FileLogger');
         $FileLoggerHandler->expects($this->any())->method('log')->with('log')->will($this->returnValue('log'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -481,7 +485,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\Logger\FileLogger');
         $FileLoggerHandler->expects($this->any())->method('log')->with('error')->will($this->returnValue('error'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -494,7 +498,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var FileLogger|\PHPUnit_Framework_MockObject_MockObject $FileLoggerHandler */
-        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\FileLogger');
+        $FileLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\Logger\FileLogger');
         $FileLoggerHandler->expects($this->any())->method('log')->with('warning')->will($this->returnValue('warning'));
         
         $AbstractWrapperMock->setLogger($FileLoggerHandler);
@@ -508,7 +512,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler',
             array(),
             '',
             false,
@@ -578,7 +582,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractDataHandler|\PHPUnit_Framework_MockObject_MockObject $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler', array(), '',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler', array(), '',
             false);
         $AbstractWrapperMock->setDataHandler($AbstractDataHandler);
         $this->assertEquals($AbstractDataHandler, $AbstractWrapperMock->getDataHandler());
@@ -647,7 +651,7 @@ class AbstractWrapperTest extends AbstractClassTest
         /** @var AbstractWrapper $AbstractWrapperMock */
         $AbstractWrapperMock = $this->getTestClass(array(self::$configkey));;
         /** @var AbstractLoggerHandler $AbstractLoggerHandler */
-        $AbstractLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractLoggerHandler');
+        $AbstractLoggerHandler = $this->getMockForAbstractClass('Sofort\SofortLib\Logger\AbstractLoggerHandler');
         $AbstractWrapperMock->setLogger($AbstractLoggerHandler);
         $this->assertAttributeEquals($AbstractLoggerHandler, '_Logger', $AbstractWrapperMock);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\Http;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH

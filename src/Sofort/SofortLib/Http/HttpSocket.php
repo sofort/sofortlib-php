@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\Http;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH
@@ -77,7 +77,7 @@ class HttpSocket extends AbstractHttp
      * This is a fallback with fsockopen if curl is not activated
      * we still need openssl and ssl wrapper support (PHP >= 4.3.0)
      *
-     * @param string $uri
+     * @param string[] $uri
      * @param string $out
      * @return string
      */

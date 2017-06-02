@@ -115,7 +115,7 @@ abstract class Multipay extends AbstractWrapper
      * @param string $languageCode | fallback EN
      * @return Multipay $this
      */
-    public function setLanguageCode($languageCode)
+    public function setLanguageCode($languageCode = '')
     {
         $this->_parameters['language_code'] = !empty($languageCode) ? $languageCode : 'EN';
         

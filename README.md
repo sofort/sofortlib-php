@@ -39,7 +39,7 @@ The SofortLib PHP package contains the following:
 
 - the `/src` directory with the class-files
 - an `/examples` folder, with examples of usage
-- the folder `/test` with the unittests (for PHP Unit).
+- the folder `/tests` with the unittests (for PHPUnit).
 
 
 

@@ -2,6 +2,8 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\DataHandler\AbstractDataHandler;
+
 /**
  * Class constructed just to test the methods of the abstract class
  * @author mm
@@ -315,7 +317,7 @@ class PaycodeDetailsAbstractTest extends TestWrapper
         $SofortLibPaycodeDetailsAbstractMock = new PaycodeDetailsAbstractMock(self::$configkey);
         $validate_only = self::_getProperty('_validateOnly', $this->_classToTest);
         /** @var AbstractDataHandler $AbstractDataHandler */
-        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\AbstractDataHandler',
+        $AbstractDataHandler = $this->getMockForAbstractClass('Sofort\SofortLib\DataHandler\AbstractDataHandler',
             array(),
             '',
             false,
