@@ -38,7 +38,6 @@ class ArrayToXml
      * @param int $maxDepth (default 10)
      * @param bool $trim (default true)
      * @throws ArrayToXmlException
-     * @return ArrayToXml
      */
     public function __construct(array $input, $maxDepth = 10, $trim = true)
     {

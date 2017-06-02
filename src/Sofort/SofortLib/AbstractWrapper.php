@@ -69,7 +69,7 @@ abstract class AbstractWrapper
     /**
      * Object for the data handler (usually XML-data handler)
      *
-     * @var object
+     * @var AbstractDataHandler
      */
     protected $_DataHandler = null;
     
@@ -185,7 +185,7 @@ abstract class AbstractWrapper
     /**
      * Getter for the dataHandler
      *
-     * @return object|null
+     * @return AbstractDataHandler|null
      */
     public function getDataHandler()
     {

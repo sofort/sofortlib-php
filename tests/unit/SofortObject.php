@@ -1,6 +1,6 @@
 <?php
 
-class Object
+class SofortObject
 {
     
     public function log($msg, $type)
