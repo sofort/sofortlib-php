@@ -24,6 +24,10 @@ $Sofortueberweisung->setAbortUrl('YOUR_ABORT_URL');
 $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 //$Sofortueberweisung->setCustomerprotection(true);
 
+// By default without setter Api version 1.0 will be used due to backward compatibility, please set ApiVersion to
+// latest version. Please note that the response might have a different structure and values For more details please
+// see our Api documentation on https://www.sofort.com/integrationCenter-ger-DE/integration/API-SDK/
+$Sofortueberweisung->setApiVersion('2.0');
 
 $Sofortueberweisung->sendRequest();
 
