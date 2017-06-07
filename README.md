@@ -77,3 +77,8 @@ Start testing via the following:
 docker build -t sofortlib .
 docker run -ti -v $(pwd):/app sofortlib bash -c "composer install && vendor/bin/phpunit"
 ```
+
+## Use Docker to run examples
+```
+docker run -ti -v $(pwd):/app sofortlib bash -c "php examples/Paycode.php"
+```
