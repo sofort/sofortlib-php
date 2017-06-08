@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y \
-	curl git zip php php-dom php-curl php-common php-xdebug php-intl\
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+	curl git zip php php-dom php-curl php-common php-xdebug\
 && apt-get clean
 
 # * * * * * * * * * install composer
