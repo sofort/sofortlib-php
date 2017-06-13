@@ -1404,6 +1404,19 @@ class TransactionDataTest extends TestWrapper
     }
     
     
+    public function providerSetProduct()
+    {
+        return array(
+            array(
+                array(
+                    'payment',
+                    'paycode',
+                )
+            )
+        );
+    }
+    
+    
     public function providerSetStatusModifiedTime()
     {
         return array(
@@ -2822,6 +2835,22 @@ class TransactionDataTest extends TestWrapper
             $SofortLibTransactionData->setStatus($status);
             $received = $SofortLibTransactionData->getParameters();
             $this->assertEquals($status, $received['status']);
+        }
+    }
+    
+    
+    /**
+     * @dataProvider providerSetProduct
+     * @param $provided
+     */
+    public function testSetProduct($provided)
+    {
+        $SofortLibTransactionData = new TransactionData(self::$configkey);
+        
+        foreach ($provided as $product) {
+            $SofortLibTransactionData->setProduct($product);
+            $received = $SofortLibTransactionData->getParameters();
+            $this->assertEquals($product, $received['product']);
         }
     }
     

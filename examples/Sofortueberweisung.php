@@ -27,7 +27,7 @@ $Sofortueberweisung->setNotificationUrl('YOUR_NOTIFICATION_URL');
 
 $Sofortueberweisung->sendRequest();
 
-if($Sofortueberweisung->isError()) {
+if ($Sofortueberweisung->isError()) {
     // SOFORT-API didn't accept the data
     echo $Sofortueberweisung->getError();
 } else {

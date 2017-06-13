@@ -11,7 +11,7 @@ namespace Sofort\SofortLib;
  * This class is  for retrieving information about transactions, you can search by transaction-id or by date
  *
  * eg:
- * $SofortLibTransactionData = new SofortLibTransactionData('yourapikey');
+ * $SofortLibTransactionData = new TransactionData('yourapikey');
  * $SofortLibTransactionData->addTransaction('1234-456-789654-31321')->sendRequest();
  *
  * echo $SofortLibTransactionData->getStatus();
@@ -550,6 +550,20 @@ class TransactionData extends AbstractWrapper
     {
         $this->_parameters['number'] = $number;
         $this->_parameters['page'] = $page;
+        
+        return $this;
+    }
+    
+    
+    /**
+     * Request for transactions for a certian product
+     *
+     * @param string $product (payment|paycode)
+     * @return TransactionData
+     */
+    public function setProduct($product)
+    {
+        $this->_parameters['product'] = $product;
         
         return $this;
     }
