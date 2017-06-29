@@ -147,9 +147,6 @@ abstract class Multipay extends AbstractWrapper
      */
     public function setReason($reason1, $reason2 = '', $productCode = null) {
         if (!empty($reason1)) {
-            $reason1 = $this->_shortenReason($reason1);
-            $reason2 = (!empty($reason2)) ? $this->_shortenReason($reason2) : $reason2;
-            
             if (!$productCode) {
                 $this->_parameters['reasons']['reason'] = array($reason1, $reason2);
             } else {
@@ -318,22 +315,5 @@ abstract class Multipay extends AbstractWrapper
         $this->_parameters['amount'] = $amount;
         
         return $this;
-    }
-    
-    
-    /**
-     * Shortens the reason string
-     *
-     * @param string $reason
-     * @param string $pattern
-     * @param int $reasonLength
-     * @return string
-     */
-    protected function _shortenReason($reason, $pattern = '#[^a-zA-Z0-9+-\.,]#', $reasonLength = 27)
-    {
-        $reason = preg_replace($pattern, ' ', $reason);
-        $reason = substr($reason, 0, $reasonLength);
-        
-        return $reason;
     }
 }
