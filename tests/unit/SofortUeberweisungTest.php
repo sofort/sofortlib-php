@@ -347,7 +347,10 @@ class SofortueberweisungTest extends TestWrapper
         $XmlDataHandler = new XmlDataHandler(self::$configkey);
         
         //mock http
-        $http = $this->getMock('Sofort\SofortLib\AbstractHttp', array('post'), array(self::$testapi_url));
+        $http = $this->getMockBuilder('Sofort\SofortLib\AbstractHttp')
+            ->setMethods(array('post'))
+            ->setConstructorArgs(array(self::$testapi_url))
+            ->getMock();
         $http->expects($this->any())->method('post')->will($this->returnArgument(0));
         $XmlDataHandler->setConnection($http);
         
