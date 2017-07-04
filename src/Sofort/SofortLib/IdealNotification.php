@@ -106,7 +106,7 @@ class IdealNotification
     /**
      * Get the notification details
      *
-     * @param string $request (POST-Data)
+     * @param string[] $request (POST-Data)
      * @return IdealNotification $this
      */
     public function getNotification($request)

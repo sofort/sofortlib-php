@@ -2,6 +2,8 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\Http\HttpSocket;
+
 if (!defined('SOFORTLIB_VERSION')) {
     define('SOFORTLIB_VERSION', '3.0.0');
 }
@@ -33,7 +35,7 @@ EOT;
     {
         /** @var HttpSocket|\PHPUnit_Framework_MockObject_MockObject $MockPost */
         $MockPost = $this->getMock(
-            '\Sofort\SofortLib\HttpSocket',
+            '\Sofort\SofortLib\Http\HttpSocket',
             array('_socketRequest'),
             array(self::$testapi_url, 'gzip', 'http://www.sofort.com')
         );

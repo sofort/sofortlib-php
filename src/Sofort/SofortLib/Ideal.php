@@ -141,14 +141,22 @@ class Ideal extends Multipay
     
     
     /**
-     * Set the url where you want forward after successful transaction
+     * abort URLs cant be set in iDeal
      *
      * @param string $abortUrl url
      * @return Ideal $this
+     * 
+     * @deprecated 
      */
     public function setAbortUrl($abortUrl)
     {
-        $this->_parameters['user_variable_4'] = $abortUrl;
+        return $this;
+    }
+    
+    
+    public function setTimeout($timeout)
+    {
+        $this->_parameters['interface_timeout'] = $timeout;
         
         return $this;
     }
@@ -169,18 +177,50 @@ class Ideal extends Multipay
     
     
     /**
-     * Set the url where you want notification about status changes
-     * being sent to. Use SofortLibTransactionData
-     * to further process that notification
+     * Setter for languageCode
+     *
+     * @param string $languageCode | fallback EN
+     * @return Multipay $this
+     */
+    public function setLanguageCode($languageCode = '')
+    {
+        $this->_parameters['language_id'] = !empty($languageCode) ? $languageCode : 'EN';
+        
+        return $this;
+    }
+    
+    
+    /**
+     * Add another variable this can be your internal order-ID or multiple variables
+     *
+     * @param string $userVariable the contents of the variable
+     * @return Multipay $this
+     */
+    public function setUserVariable($userVariable)
+    {
+        $i = 0;
+        
+        while (array_key_exists('user_variable_'.$i, $this->_parameters)) {
+            $i++;
+        }
+        
+        $this->_parameters['user_variable_'.$i] = $userVariable;
+        
+        return $this;
+    }
+    
+    
+    /**
+     * Notification URLs cant be set in iDeal
      *
      * @param string $notificationUrl url
      * @param string $notifyOn
      * @return Ideal
+     * 
+     * @deprecated
      */
     public function setNotificationUrl($notificationUrl, $notifyOn = '')
     {
-        $this->_parameters['user_variable_5'] = $notificationUrl;
-        
         return $this;
     }
     
@@ -260,19 +300,16 @@ class Ideal extends Multipay
     
     
     /**
-     * The customer will be redirected to this url after a successful
-     * transaction, this should be a page where a short confirmation is
-     * displayed
+     * Success URLs cant be set in iDeal
      *
      * @param string $successUrl url
      * @param bool $redirect (default true)
      * @return Ideal
+     * 
+     * @deprecated
      */
     public function setSuccessUrl($successUrl, $redirect = true)
     {
-        $this->_parameters['user_variable_3'] = $successUrl;
-        $this->setSuccessLinkRedirect($redirect);
-        
         return $this;
     }
     

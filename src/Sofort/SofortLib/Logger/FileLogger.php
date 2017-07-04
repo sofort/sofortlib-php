@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\Logger;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH
@@ -59,7 +59,7 @@ class FileLogger extends AbstractLoggerHandler
      */
     public function __construct($path = '')
     {
-        $srcDir = dirname(dirname(dirname(__FILE__)));
+        $srcDir = dirname(dirname(dirname(dirname(__FILE__))));
         
         $this->_logfilePath = ($path != '') ? $path : $srcDir . '/logs/log.txt';
         $this->_errorLogfilePath = $srcDir . '/logs/error_log.txt';

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\DataHandler;
 
 use Sofort\SofortLib\Xml\ArrayToXml;
 use Sofort\SofortLib\Xml\XmlToArray;
@@ -15,18 +15,6 @@ use Sofort\SofortLib\Xml\XmlToArray;
  */
 class XmlDataHandler extends AbstractDataHandler
 {
-    
-    /**
-     * Should be moved to somewhere else (where it fits better)
-     *
-     * @param string $configKey
-     */
-    public function __construct($configKey)
-    {
-        parent::__construct($configKey);
-    }
-    
-    
     /**
      * Preparing data and parsing result received
      *

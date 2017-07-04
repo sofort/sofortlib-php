@@ -107,9 +107,7 @@ class IdealTest extends TestWrapper
         $SofortIdeal->setSenderAccountNumber('2345678902');
         $SofortIdeal->setSenderBankCode('31');
         $SofortIdeal->setSenderCountryId('NL');
-        $SofortIdeal->setSuccessUrl('http://www.google.de');
-        $SofortIdeal->setAbortUrl('http://www.google.de');
-        $SofortIdeal->setNotificationUrl('http://www.google.de');
+        $SofortIdeal->setLanguageCode('NL');
         $SofortIdeal->setVersion('Framework 0.0.1');
         
         $getPaymentUrl = $SofortIdeal->getPaymentUrl();
@@ -126,9 +124,9 @@ class IdealTest extends TestWrapper
             'user_variable_0' => '',
             'user_variable_1' => '',
             'user_variable_2' => '',
-            'user_variable_3' => 'http://www.google.de',
-            'user_variable_4' => 'http://www.google.de',
-            'user_variable_5' => 'http://www.google.de',
+            'user_variable_3' => '',
+            'user_variable_4' => '',
+            'user_variable_5' => '',
         );
         $hashString = '';
         
@@ -144,8 +142,7 @@ class IdealTest extends TestWrapper
             . '&project_id=' . self::$project_id
             . '&reason_1=Testzweck&reason_2=Testzweck4&amount=10'
             . '&sender_account_number=2345678902&sender_bank_code=31&sender_country_id=NL'
-            . '&user_variable_3=http%3A%2F%2Fwww.google.de&success_link_redirect=1&user_variable_4=http%3A%2F%2Fwww.google.de'
-            . '&user_variable_5=http%3A%2F%2Fwww.google.de&interface_version=Framework+0.0.1'
+            . '&language_id=NL&interface_version=Framework+0.0.1'
             . '&hash=' . $hashStringSha1;
         $this->assertEquals($urlSha1, $getPaymentUrl);
         
@@ -157,9 +154,6 @@ class IdealTest extends TestWrapper
         $SofortIdeal->setSenderAccountNumber('2345678902');
         $SofortIdeal->setSenderBankCode('31');
         $SofortIdeal->setSenderCountryId('NL');
-        $SofortIdeal->setSuccessUrl('http://www.google.de');
-        $SofortIdeal->setAbortUrl('http://www.google.de');
-        $SofortIdeal->setNotificationUrl('http://www.google.de');
         $SofortIdeal->setVersion('Framework 0.0.1');
         
         $getPaymentUrl = $SofortIdeal->getPaymentUrl();
@@ -169,8 +163,7 @@ class IdealTest extends TestWrapper
             . '&project_id=' . self::$project_id
             . '&reason_1=Testzweck&reason_2=Testzweck4&amount=10'
             . '&sender_account_number=2345678902&sender_bank_code=31&sender_country_id=NL'
-            . '&user_variable_3=http%3A%2F%2Fwww.google.de&success_link_redirect=1&user_variable_4=http%3A%2F%2Fwww.google.de'
-            . '&user_variable_5=http%3A%2F%2Fwww.google.de&interface_version=Framework+0.0.1'
+            . '&interface_version=Framework+0.0.1'
             . '&hash=' . $hashStringMd5;
         $this->assertEquals($urlMd5, $getPaymentUrl);
         
@@ -182,21 +175,17 @@ class IdealTest extends TestWrapper
         $SofortIdeal->setSenderAccountNumber('2345678902');
         $SofortIdeal->setSenderBankCode('31');
         $SofortIdeal->setSenderCountryId('NL');
-        $SofortIdeal->setSuccessUrl('http://www.google.de');
-        $SofortIdeal->setAbortUrl('http://www.google.de');
-        $SofortIdeal->setNotificationUrl('http://www.google.de');
         $SofortIdeal->setVersion('Framework 0.0.1');
         
         $getPaymentUrl = $SofortIdeal->getPaymentUrl();
-        $urlWuselschnusel = 'https://www.sofort.com/payment/ideal?'
+        $startUrl = 'https://www.sofort.com/payment/ideal?'
             . 'user_id=' . self::$user_id
             . '&project_id=' . self::$project_id
             . '&reason_1=Testzweck&reason_2=Testzweck4&amount=10'
             . '&sender_account_number=2345678902&sender_bank_code=31&sender_country_id=NL'
-            . '&user_variable_3=http%3A%2F%2Fwww.google.de&success_link_redirect=1&user_variable_4=http%3A%2F%2Fwww.google.de'
-            . '&user_variable_5=http%3A%2F%2Fwww.google.de&interface_version=Framework+0.0.1'
+            . '&interface_version=Framework+0.0.1'
             . '&hash=';
-        $this->assertEquals($urlWuselschnusel, $getPaymentUrl);
+        $this->assertEquals($startUrl, $getPaymentUrl);
         
         $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password, 'sha256');
         $this->assertAttributeEquals(strtolower('sha256'), '_hashFunction', $SofortIdeal);
@@ -206,10 +195,36 @@ class IdealTest extends TestWrapper
         $SofortIdeal->setSenderAccountNumber('2345678902');
         $SofortIdeal->setSenderBankCode('31');
         $SofortIdeal->setSenderCountryId('NL');
-        $SofortIdeal->setSuccessUrl('http://www.google.de');
-        $SofortIdeal->setAbortUrl('http://www.google.de');
-        $SofortIdeal->setNotificationUrl('http://www.google.de');
+        $SofortIdeal->setUserVariable('User-Var1');
+        $SofortIdeal->setUserVariable('User-Var2');
+        $SofortIdeal->setUserVariable('User-Var3');
         $SofortIdeal->setVersion('Framework 0.0.1');
+
+        $hashFields = array(
+            'user_id' => self::$ideal_userid,
+            'project_id' => self::$ideal_projectid,
+            'sender_holder' => '',
+            'sender_account_number' => '2345678902',
+            'sender_bank_code' => '31',
+            'sender_country_id' => 'NL',
+            'amount' => 10,
+            'reason_1' => 'Testzweck',
+            'reason_2' => 'Testzweck4',
+            'user_variable_0' => 'User-Var1',
+            'user_variable_1' => 'User-Var2',
+            'user_variable_2' => 'User-Var3',
+            'user_variable_3' => '',
+            'user_variable_4' => '',
+            'user_variable_5' => '',
+        );
+        $hashString = '';
+
+        foreach ($hashFields as $value) {
+            $hashString .= $value;
+            $hashString .= '|';
+        }
+
+        $hashString .= self::$ideal_password;
         
         $getPaymentUrl = $SofortIdeal->getPaymentUrl();
         $hashStringSha256 = hash('Sha256', $hashString);
@@ -218,36 +233,10 @@ class IdealTest extends TestWrapper
             . '&project_id=' . self::$project_id
             . '&reason_1=Testzweck&reason_2=Testzweck4&amount=10'
             . '&sender_account_number=2345678902&sender_bank_code=31&sender_country_id=NL'
-            . '&user_variable_3=http%3A%2F%2Fwww.google.de&success_link_redirect=1&user_variable_4=http%3A%2F%2Fwww.google.de'
-            . '&user_variable_5=http%3A%2F%2Fwww.google.de&interface_version=Framework+0.0.1'
+            . '&user_variable_0=User-Var1&user_variable_1=User-Var2&user_variable_2=User-Var3'
+            . '&interface_version=Framework+0.0.1'
             . '&hash=' . $hashStringSha256;
         $this->assertEquals($urlSha256, $getPaymentUrl);
-    }
-    
-    
-    /**
-     * @dataProvider providerSetAbortUrl
-     * @param string $provided
-     */
-    public function testSetAbortUrl($provided)
-    {
-        $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
-        $SofortIdeal->setAbortUrl($provided);
-        $received = $SofortIdeal->getParameters();
-        $this->assertEquals($provided, $received['user_variable_4']);
-    }
-    
-    
-    /**
-     * @dataProvider providerSetNotificationUrl
-     * @param string $provided
-     */
-    public function testSetNotificationUrl($provided)
-    {
-        $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
-        $SofortIdeal->setNotificationUrl($provided);
-        $received = $SofortIdeal->getParameters();
-        $this->assertEquals($provided, $received['user_variable_5']);
     }
     
     
@@ -313,18 +302,5 @@ class IdealTest extends TestWrapper
         $SofortIdeal->setSenderHolder($provided);
         $received = $SofortIdeal->getParameters();
         $this->assertEquals($provided, $received['sender_holder']);
-    }
-    
-    
-    /**
-     * @dataProvider providerSetSuccessUrl
-     * @param string $provided
-     */
-    public function testSetSuccessUrl($provided)
-    {
-        $SofortIdeal = new Ideal(self::$ideal_configkey, self::$ideal_password);
-        $SofortIdeal->setSuccessUrl($provided);
-        $received = $SofortIdeal->getParameters();
-        $this->assertEquals($provided, $received['user_variable_3']);
     }
 }

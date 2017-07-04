@@ -1,10 +1,12 @@
 <?php
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\DataHandler\AbstractDataHandler;
+
 class AbstractDataHandlerTest extends TestWrapper
 {
     
-    protected $_classToTest = '\Sofort\SofortLib\AbstractDataHandler';
+    protected $_classToTest = '\Sofort\SofortLib\DataHandler\AbstractDataHandler';
     
     public function providerGetApiKey()
     {

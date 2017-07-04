@@ -34,6 +34,7 @@ $SofortLibTransactionData->setApiVersion('2.0');
 
 //$SofortLibTransactionData->setTime('2012-11-14T18:00+02:00', '2012-12-13T00:00+02:00');
 //$SofortLibTransactionData->setNumber(5, 1);
+//$SofortLibTransactionData->setProduct('payment');
 
 $SofortLibTransactionData->sendRequest();
 
@@ -72,7 +73,7 @@ $methods = array(
 );
 
 foreach($methods as $method => $params) {
-    if(count($params) == 2) {
+    if (count($params) == 2) {
         $output[] = $method . ': ' . $SofortLibTransactionData->$method($params[0], $params[1]);
     } else if($params !== '') {
         $output[] = $method . ': ' . $SofortLibTransactionData->$method($params);
@@ -81,7 +82,7 @@ foreach($methods as $method => $params) {
     }
 }
 
-if($SofortLibTransactionData->isError()) {
+if ($SofortLibTransactionData->isError()) {
     echo $SofortLibTransactionData->getError();
 } else {
     echo implode('<br />', $output);

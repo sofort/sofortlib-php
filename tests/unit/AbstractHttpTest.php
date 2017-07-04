@@ -2,10 +2,12 @@
 
 namespace Sofort\SofortLib;
 
+use Sofort\SofortLib\Http\AbstractHttp;
+
 class AbstractHttpTest extends AbstractClassTest
 {
     
-    protected $_classToTest = 'Sofort\SofortLib\AbstractHttp';
+    protected $_classToTest = 'Sofort\SofortLib\Http\AbstractHttp';
     
     public function providerConstructor()
     {

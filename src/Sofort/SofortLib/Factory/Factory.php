@@ -1,6 +1,11 @@
 <?php
 
-namespace Sofort\SofortLib;
+namespace Sofort\SofortLib\Factory;
+
+use Sofort\SofortLib\DataHandler\XmlDataHandler;
+use Sofort\SofortLib\Http\HttpCurl;
+use Sofort\SofortLib\Http\HttpSocket;
+use Sofort\SofortLib\Logger\FileLogger;
 
 /**
  * @copyright 2010-2016 SOFORT GmbH
@@ -21,8 +26,6 @@ class Factory
      */
     static public function getDataHandler($configKey)
     {
-        require_once(dirname(__FILE__) . '/XmlDataHandler.php');
-        
         return new XmlDataHandler($configKey);
     }
     
@@ -38,12 +41,8 @@ class Factory
     static public function getHttpConnection($data, $url = false, $headers = false)
     {
         if (function_exists('curl_init')) {
-            require_once(dirname(__FILE__) . '/HttpCurl.php');
-            
             return new HttpCurl($data, $url, $headers);
         } else {
-            require_once(dirname(__FILE__) . '/HttpSocket.php');
-            
             return new HttpSocket($data, $url, $headers);
         }
     }
@@ -56,8 +55,6 @@ class Factory
      */
     static public function getLogger()
     {
-        require_once(dirname(__FILE__) . '/FileLogger.php');
-        
         return new FileLogger();
     }
 }

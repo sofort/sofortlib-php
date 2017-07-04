@@ -5,6 +5,10 @@ namespace Sofort\SofortLib;
 /**
  * SofortLibPHP version - Constant
  */
+use Sofort\SofortLib\DataHandler\AbstractDataHandler;
+use Sofort\SofortLib\Factory\Factory;
+use Sofort\SofortLib\Logger\AbstractLoggerHandler;
+
 if (!defined('SOFORTLIB_VERSION')) {
     define('SOFORTLIB_VERSION', '3.0.0');
 }
@@ -143,12 +147,9 @@ abstract class AbstractWrapper
             $apiUrl = (getenv('sofortApiUrl') != '') ? getenv('sofortApiUrl') : self::GATEWAY_URL;
         }
         
-        $SofortLibHttp = Factory::getHttpConnection($apiUrl);
-        $XmlDataHandler = Factory::getDataHandler($configKey);
-        $this->setDataHandler($XmlDataHandler);
-        $FileLogger = Factory::getLogger();
-        $this->setLogger($FileLogger);
-        $this->_DataHandler->setConnection($SofortLibHttp);
+        $this->setDataHandler(Factory::getDataHandler($configKey));
+        $this->setLogger(Factory::getLogger());
+        $this->_DataHandler->setConnection(Factory::getHttpConnection($apiUrl));
         $this->enableLogging = (getenv('sofortDebug') == 'true') ? true : false;
     }
     

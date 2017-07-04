@@ -30,7 +30,7 @@ class XmlToArrayNode
     /**
      * Data
      *
-     * @var string
+     * @var string[]
      */
     private $_data = '';
     
