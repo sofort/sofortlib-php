@@ -39,7 +39,7 @@ class XmlToArray
     /**
      * Object reference for logging purposes
      *
-     * @var Object $_Object
+     * @var SofortObject $_Object
      */
     private $_Object = null;
     
@@ -98,8 +98,8 @@ class XmlToArray
      */
     public function log($msg, $type = 2)
     {
-        if (class_exists('\Object')) {
-            !($this->_Object instanceof \Object) && $this->_Object = new \Object();
+        if (class_exists('\SofortObject')) {
+            !($this->_Object instanceof \SofortObject) && $this->_Object = new \SofortObject();
             
             return $this->_Object->log($msg, $type);
         }

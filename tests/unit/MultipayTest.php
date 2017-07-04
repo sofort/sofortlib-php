@@ -93,9 +93,9 @@ class MultipayTest extends TestWrapper
             array(array('Verwendungszweck', null), array('Verwendungszweck', '')),
             array(
                 array('Verwendungszweck', '123456789012345678901234567890'),
-                array('Verwendungszweck', '123456789012345678901234567')
+                array('Verwendungszweck', '123456789012345678901234567890')
             ),
-            array(array('Verwendungszweck', 'test@test'), array('Verwendungszweck', 'test test')),
+            array(array('Verwendungszweck', 'test@test'), array('Verwendungszweck', 'test@test')),
         );
     }
     
