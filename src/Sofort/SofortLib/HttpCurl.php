@@ -52,9 +52,7 @@ class HttpCurl extends AbstractHttp
         
         $curlOpt[CURLOPT_POSTFIELDS] = $data;
         $curlOpt[CURLOPT_RETURNTRANSFER] = 1;
-        $curlOpt[CURLOPT_SSL_VERIFYHOST] = 0;
-        $curlOpt[CURLOPT_SSL_VERIFYPEER] = false;
-        
+
         $return = $this->_curlRequest($url, $curlOpt);
         
         if ($this->error) {
