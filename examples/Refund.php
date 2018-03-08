@@ -22,11 +22,6 @@ if($SofortLibRefund->isError()) {
     // SOFORT-API didn't accept the data
     echo $SofortLibRefund->getError();
 } else {
-    // buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
-    $paymentUrl = $SofortLibRefund->getPaymentUrl();
-    header('Location: '.$paymentUrl);
-}
-
 /*
 echo $SofortLibRefund->getSenderHolder().'<br/>';
 echo $SofortLibRefund->getSenderBic().'<br/>';
@@ -44,3 +39,4 @@ echo $SofortLibRefund->getStatus(0).'<br/>';
 echo $SofortLibRefund->getTime(0).'<br/>';
 echo $SofortLibRefund->getPartialRefundId(0).'<br/>';
 */
+}
