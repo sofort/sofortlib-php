@@ -567,7 +567,21 @@ class TransactionData extends AbstractWrapper
         
         return $this;
     }
-    
+
+
+    /**
+     * Request for transactions via projectId
+     *
+     * @param string $projectId
+     * @return TransactionData
+     */
+    public function setProjectId($projectId)
+    {
+        $this->_parameters['project_id'] = $projectId;
+        $this->_projectId = $projectId;
+
+        return $this;
+    }
     
     /**
      * Request for transactions with their status changed within a certain time

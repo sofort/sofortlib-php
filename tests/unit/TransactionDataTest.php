@@ -1455,8 +1455,17 @@ class TransactionDataTest extends TestWrapper
             ),
         );
     }
-    
-    
+
+
+    public function providerSetProjectId() {
+        return [
+            [
+                12345
+            ]
+        ];
+    }
+
+
     /**
      * @dataProvider providerAddTransaction
      * @param $provided
@@ -2868,5 +2877,18 @@ class TransactionDataTest extends TestWrapper
         $SofortLibTransactionData->setTime($provided[0], $provided[1]);
         $received = $SofortLibTransactionData->getParameters();
         $this->assertEquals($provided, array($received['from_time'], $received['to_time']));
+    }
+
+
+    /**
+     * @dataProvider providerSetProjectId
+     * @param $provided
+     */
+    public function testSetProjectId($provided)
+    {
+        $SofortLibTransactionData = new TransactionData(self::$configkey);
+        $SofortLibTransactionData->setProjectId($provided);
+        $received = $SofortLibTransactionData->getParameters();
+        $this->assertEquals($provided, $received['project_id']);
     }
 }
