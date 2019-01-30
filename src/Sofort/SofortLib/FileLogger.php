@@ -63,7 +63,7 @@ class FileLogger extends AbstractLoggerHandler
         
         $path = rtrim(rtrim($path, '/'),'\\');
         if ($path == '') {
-            $path = $srcDir;
+            $path = $srcDir.'/logs';
         }
         $this->setLogfilePath($path);
     }
