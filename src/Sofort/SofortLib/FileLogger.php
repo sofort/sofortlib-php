@@ -61,9 +61,11 @@ class FileLogger extends AbstractLoggerHandler
     {
         $srcDir = dirname(dirname(dirname(__FILE__)));
         
-        $this->_logfilePath = ($path != '') ? $path : $srcDir . '/logs/log.txt';
-        $this->_errorLogfilePath = $srcDir . '/logs/error_log.txt';
-        $this->_warningsLogfilePath = $srcDir . '/logs/warning_log.txt';
+        $path = rtrim(rtrim($path, '/'),'\\');
+        if ($path == '') {
+            $path = $srcDir.'/logs';
+        }
+        $this->setLogfilePath($path);
     }
     
     
@@ -88,7 +90,10 @@ class FileLogger extends AbstractLoggerHandler
      */
     public function setLogfilePath($path)
     {
-        $this->_logfilePath = $path;
+        $path = rtrim(rtrim($path, '/'),'\\');
+        $this->_logfilePath = $path . '/log.txt';
+        $this->_errorLogfilePath = $path . '/error_log.txt';
+        $this->_warningsLogfilePath = $path . '/warning_log.txt';
     }
     
     
