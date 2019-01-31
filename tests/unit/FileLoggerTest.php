@@ -67,9 +67,9 @@ class FileLoggerTest extends \PHPUnit_Framework_TestCase
     public function testSetLogfilePath()
     {
         $SofortLibLogger = new FileLogger('wusel');
-        $this->assertAttributeEquals('wusel', '_logfilePath', $SofortLibLogger);
+        $this->assertAttributeEquals('wusel/log.txt', '_logfilePath', $SofortLibLogger);
         
         $SofortLibLogger->setLogfilePath('test');
-        $this->assertAttributeEquals('test', '_logfilePath', $SofortLibLogger);
+        $this->assertAttributeEquals('test/log.txt', '_logfilePath', $SofortLibLogger);
     }
 }
