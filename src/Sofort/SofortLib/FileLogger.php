@@ -93,7 +93,7 @@ class FileLogger extends AbstractLoggerHandler
         $path = rtrim(rtrim($path, '/'),'\\');
         $this->_logfilePath = $path . '/log.txt';
         $this->_errorLogfilePath = $path . '/error_log.txt';
-        $this->_warningsLogfilePath = rtrim($path, '/') . '/warning_log.txt';
+        $this->_warningsLogfilePath = $path . '/warning_log.txt';
     }
     
     
